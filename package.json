@@ -1,0 +1,43 @@
+{
+  "name": "Fancy",
+  "version": "2.0.8",
+  "description": "Fancy Music Coded by WhoFancy?",
+  "main": "sharder.js",
+  "scripts": {
+    "start": "node ./src/sharder.js"
+  },
+  "dependencies": {
+    "common-tags": "^1.8.2",
+    "cpu-stat": "^2.0.1",
+    "delay": "^6.0.0",
+    "discord-hybrid-sharding": "^2.1.2",
+    "discord.js": "^14.11.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "google-search-url": "^0.1.8",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "moment-duration-format": "^2.3.2",
+    "mongoose": "^6.11.1",
+    "node-capitalize": "^1.0.0",
+    "node-cron": "^3.0.2",
+    "node-fetch": "^2.6.11",
+    "poru": "github:adh319/poru",
+    "pretty-ms": "^7.0.1",
+    "quick.db": "^9.1.7",
+    "voucher-code-generator": "^1.3.0"
+  },
+  "author": "WhoFancy?#0000",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WhoFancy/FancyMusic.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WhoFancy/FancyMusic#issues"
+  },
+  "homepage": "https://github.com/WhoFancy/FancyMusic/#readme",
+  "devDependencies": {
+    "node": "^18.16.0"
+  }
+}
