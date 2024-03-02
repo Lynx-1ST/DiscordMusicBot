@@ -24,7 +24,7 @@ module.exports = {
 
         await player.filters.setVibrato(true);
 
-        const embed = new EmbedBuilder().setDescription(`\<a:filter:1200818160828420130>\ | Filter has been set to: \`Vibrato\``).setColor(client.color);
+        const embed = new EmbedBuilder().setDescription(`\<:zcmtyAdmin:1212983944732082246>\ | Bộ lọc: \`Vibrato\``).setColor(client.color);
 
         return interaction.editReply({ embeds: [embed] });
     },
