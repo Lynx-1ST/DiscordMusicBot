@@ -18,7 +18,7 @@ module.exports = {
         premium: false,
     },
     run: async (client, message) => {
-        const embed = new EmbedBuilder().setDescription(`<a:Bot:1200818564198846594> | Bot is: \`Restarting\``).setColor(client.color);
+        const embed = new EmbedBuilder().setDescription(`<a:loading:1213403030616018944> | Bot đang: \`KHỞI ĐỘNG LẠI\``).setColor(client.color);
 
         await message.reply({ embeds: [embed] });
 
