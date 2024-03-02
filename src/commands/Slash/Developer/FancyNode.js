@@ -32,8 +32,8 @@ module.exports = {
             const stats = node.stats;
             const fields = [
                 {
-                    name: `**Node ${node.name} Connected **`,
-                    value: `\`\`\`Connected: ${node.stats.players}\nPlaying: ${node.stats.playingPlayers}\nUptime: ${new Date(
+                    name: `**Node ${node.name} đã kết nối **`,
+                    value: `\`\`\`Số lượng kết nối: ${node.stats.players}\nĐang phát: ${node.stats.playingPlayers}\nT/g hoạt động: ${new Date(
                         node.stats.uptime,
                     )
                         .toISOString()
@@ -41,17 +41,17 @@ module.exports = {
                     inline: false,
                 },
                 {
-                    name: "CPU Information",
-                    value: `\`\`\`Cores: ${node.stats.cpu.cores}\nSystem Load: ${(
+                    name: "Thông tin CPU",
+                    value: `\`\`\`Số nhân: ${node.stats.cpu.cores}\nTải hệ thống: ${(
                         Math.round(node.stats.cpu.systemLoad * 100) / 100
-                    ).toFixed(2)}%\nLavalink Load: ${(Math.round(node.stats.cpu.lavalinkLoad * 100) / 100).toFixed(2)}%\`\`\``,
+                    ).toFixed(2)}%\nLavalink: ${(Math.round(node.stats.cpu.lavalinkLoad * 100) / 100).toFixed(2)}%\`\`\``,
                     inline: false,
                 },
                 {
-                    name: "Memory Information",
-                    value: `\`\`\`Reservable Memory: ${Math.round(node.stats.memory.reservable / 1024 / 1024)}MB\nUsed Memory: ${Math.round(
+                    name: "Thông tin bộ nhớ",
+                    value: `\`\`\`Bộ nhớ dự trữ: ${Math.round(node.stats.memory.reservable / 1024 / 1024)}MB\nBộ nhớ đã sử dụng: ${Math.round(
                         node.stats.memory.used / 1024 / 1024,
-                    )}MB\nFree Memory: ${Math.round(node.stats.memory.free / 1024 / 1024)}MB\nAllocated Memory: ${Math.round(
+                    )}MB\nBộ nhớ khả dụng: ${Math.round(node.stats.memory.free / 1024 / 1024)}MB\nAllocated Memory: ${Math.round(
                         node.stats.memory.allocated / 1024 / 1024,
                     )}MB\`\`\``,
                     inline: false,
