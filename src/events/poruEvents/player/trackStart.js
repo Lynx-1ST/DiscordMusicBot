@@ -21,11 +21,11 @@ module.exports.run = async (client, player, track) => {
 
     const Started = new EmbedBuilder()
         .setAuthor({
-            name: `**ĐANG PHÁT**`,
+            name: `--- ĐANG PHÁT 💎---`,
             iconURL: "https://cdn.discordapp.com/emojis/1189604441213644851.gif",
         })
-        .setThumbnail(track.info.image)
-        .setDescription(`**[${trackTitle}](${track.info.uri})**`)
+        .setThumbnail(track.info.author)
+        .setDescription(`**[${trackTitle}](${track.info.uri})**${track.info.image}`)
         .addFields([
             { name: `Tác giả:`, value: `${trackAuthor}`, inline: true },
             { name: `Yêu cầu bởi:`, value: `${track.info.requester}`, inline: true },
@@ -86,7 +86,7 @@ module.exports.run = async (client, player, track) => {
                 player.setLoop("TRACK");
 
                 Started.setFooter({
-                    text: `Loop Mode: ${capital(player.loop)} • Queue Left: ${player.queue.length} • Volume: ${player.volume}%`,
+                    text: `Chế độ Lặp lại: ${capital(player.loop)} • Hàng chờ còn lại: ${player.queue.length} • Âm lượng: ${player.volume}%`,
                 });
 
                 bLoop.setEmoji(emoji.loop.track).setStyle(ButtonStyle.Primary);
@@ -98,7 +98,7 @@ module.exports.run = async (client, player, track) => {
                 player.setLoop("QUEUE");
 
                 Started.setFooter({
-                    text: `Loop Mode: ${capital(player.loop)} • Queue Left: ${player.queue.length} • Volume: ${player.volume}%`,
+                    text: `Chế độ Lặp lại: ${capital(player.loop)} • Hàng chờ còn lại: ${player.queue.length} • Âm lượng: ${player.volume}%`,
                 });
 
                 bLoop.setEmoji(emoji.loop.queue).setStyle(ButtonStyle.Success);
@@ -110,7 +110,7 @@ module.exports.run = async (client, player, track) => {
                 player.setLoop("NONE");
 
                 Started.setFooter({
-                    text: `Loop Mode: ${capital(player.loop)} • Queue Left: ${player.queue.length} • Volume: ${player.volume}%`,
+                    text: `Chế độ Lặp lại: ${capital(player.loop)} • Hàng chờ còn lại: ${player.queue.length} • Âm lượng: ${player.volume}%`,
                 });
 
                 bLoop.setEmoji(emoji.loop.none).setStyle(ButtonStyle.Secondary);
@@ -221,7 +221,7 @@ module.exports.run = async (client, player, track) => {
                 await player.setVolume(player.volume - 10);
 
                 Started.setFooter({
-                    text: `Queue Left: ${player.queue.length} • Loop Mode: ${capital(player.loop)} • Volume: ${player.volume}%`,
+                    text: `Chế độ Lặp lại: ${capital(player.loop)} • Hàng chờ còn lại: ${player.queue.length} • Âm lượng: ${player.volume}%`,
                 });
 
                 await nplaying.edit({ embeds: [Started], components: [button, button2] });
@@ -275,14 +275,14 @@ module.exports.run = async (client, player, track) => {
                     .setThumbnail(player.currentTrack.info.image)
                     .setDescription(`**[${currentTitle}](${player.currentTrack.info.uri})**`)
                     .addFields([
-                        { name: `Author:`, value: `${currentAuthor}`, inline: true },
-                        { name: `Requested By:`, value: `${player.currentTrack.info.requester}`, inline: true },
-                        { name: `Source:`, value: `${sources}`, inline: true },
-                        { name: `Duration:`, value: `${playerDuration}`, inline: true },
-                        { name: `Volume:`, value: `${player.volume}%`, inline: true },
-                        { name: `Queue Left:`, value: `${player.queue.length}`, inline: true },
+                        { name: `Tác giả:`, value: `${currentAuthor}`, inline: true },
+                        { name: `Yêu cầu bởi:`, value: `${player.currentTrack.info.requester}`, inline: true },
+                        { name: `Nguồn:`, value: `${sources}`, inline: true },
+                        { name: `Thời lượng:`, value: `${playerDuration}`, inline: true },
+                        { name: `Âm lượng:`, value: `${player.volume}%`, inline: true },
+                        { name: `Hàng chờ còn lại:`, value: `${player.queue.length}`, inline: true },
                         {
-                            name: `Song Progress: \`[${currentPosition}]\``,
+                            name: `Tiến trình bài hát: \`[${currentPosition}]\``,
                             value: `\`\`\`${Emoji} ${"─".repeat(Part) + "🔵" + "─".repeat(30 - Part)}\`\`\``,
                             inline: false,
                         },
