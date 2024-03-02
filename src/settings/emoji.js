@@ -4,7 +4,7 @@ module.exports = {
         resume: "<:play:1213392707695804507>",
         stop: "<:stop:1213391982076895232>",
         skip: "<:skip:1213394130831679508>",
-        previous: "⏮️",
+        previous: "<:previous:1213411418674696242>",
         replay: "<:replay:1213425207050502144>",
         voldown: "🔉",
         volup: "🔊",
