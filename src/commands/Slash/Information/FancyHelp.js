@@ -53,7 +53,7 @@ module.exports = {
         const row = new ActionRowBuilder().addComponents([
             new StringSelectMenuBuilder()
                 .setCustomId("help-category")
-                .setPlaceholder(`Fancy Commands`)
+                .setPlaceholder(`Danh sách lệnh`)
                 .setMaxValues(1)
                 .setMinValues(1)
                 .setOptions(
@@ -80,11 +80,11 @@ module.exports = {
 
                         const embed = new EmbedBuilder()
                             .setAuthor({
-                                name: `${interaction.guild.members.me.displayName} Help Command!`,
+                                name: `${interaction.guild.members.me.displayName} lệnh hỗ trợ!`,
                                 iconURL: interaction.guild.iconURL({ dynamic: true }),
                             })
                             .setDescription(
-                                `\ \n\n**\<:F_arrow:1200816267343446106> ${
+                                `\ \n\n**\<a:emoji6592:1213420855300984832> ${
                                     directory.slice(0, 1).toUpperCase() + directory.slice(1)
                                 } Commands:**\n${client.slashCommands
                                     .filter((c) => c.category === directory)
