@@ -3,12 +3,12 @@ const formatDuration = require("../../../structures/FormatDuration.js");
 
 module.exports = {
     name: "play",
-    description: "Play your favorite song/s.",
+    description: "Chơi các bài hát yêu thích của bạn.",
     category: "Music",
     options: [
         {
             name: "query",
-            description: "Provide song name/url.",
+            description: "Cung cấp tên/link bài hát.",
             type: ApplicationCommandOptionType.String,
             required: true,
         },
