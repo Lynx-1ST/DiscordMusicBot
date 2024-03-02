@@ -2,10 +2,10 @@ require("dotenv").config();
 
 module.exports = {
 
-  token: process.env.TOKEN || "", // <==== PASTE YOU TOKEN
-  prefix: process.env.PREFIX || ".", // <==== SET YOU PRERIX BOT [ OWNER COMMANDS ]
+  token: process.env.TOKEN || "MTIwMzc0NDcwNjcwMjYxMDUyMg.GHaZku.jq2kivnDk8FRzWpAiRVwFTqPaaMaxfy6FuBxRw", // <==== PASTE YOU TOKEN
+  prefix: process.env.PREFIX || "+", // <==== SET YOU PRERIX BOT [ OWNER COMMANDS ]
   color: process.env.EMBED_COLOR || "#2f3136", // <==== YOU EMBEDED HEX COLOR
-  owner: process.env.OWNER_ID || "1173547185758015498", // <==== BOTS OWNER ID
+  owner: process.env.OWNER_ID || "1203748123961327707", // <==== BOTS OWNER ID
   guildLogs: process.env.GUILD_LOGS || "1198586029343518820", // <==== YOUR SERVER JOIN LEFT LOGS CHANNEL ID
   leaveTimeout: process.env.LEAVE_TIMEOUT || "20000", // <==== SET LEAVE TIMEOUT WHEN BOT WAS ALONE || 1000 = 1sec
   disableYouTube: parseBoolean(process.env.DISABLE_YOUTUBE || "false"), // <==== SET "TRUE OR FALSE" | ENABLE/DISABLE YOUTUBE FEATURES. DISABLING THIS WILL MAKE "AUTOPLAY" COMMANDS USELESS!!!
