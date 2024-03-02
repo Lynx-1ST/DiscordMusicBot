@@ -1,1 +1,1 @@
-worker: ./src/sharder.js
+worker: npm start
