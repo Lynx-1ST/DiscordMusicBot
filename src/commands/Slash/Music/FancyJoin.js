@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "join",
-    description: "Invite bot to your voice channel.",
+    description: "Mời bot vào kênh thoại của bạn.",
     category: "Music",
     permissions: {
         bot: ["Speak", "Connect"],
