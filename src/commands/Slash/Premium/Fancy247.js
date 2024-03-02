@@ -29,7 +29,7 @@ module.exports = {
         if (data) {
             await data.delete();
 
-            const off = new EmbedBuilder().setDescription(`<a:off_off:1200807969235935294> | 247 Mode has been: \`Disabled\``).setColor(client.color);
+            const off = new EmbedBuilder().setDescription(`<a:check_mark:1213409895483965490> | Chế độ 24/7 đã: \`TẮT\``).setColor(client.color);
 
             return interaction.editReply({ embeds: [off] });
         } else if (!data) {
@@ -46,7 +46,7 @@ module.exports = {
 
             await newData.save();
 
-            const on = new EmbedBuilder().setDescription(`<a:on2:1200808044951511091> | 247 Mode has been: \`Enabled\``).setColor(client.color);
+            const on = new EmbedBuilder().setDescription(`<a:check_mark:1213409895483965490> | Chế độ 24/7 đã: \`BẬT\``).setColor(client.color);
 
             return interaction.editReply({ embeds: [on] });
         }
