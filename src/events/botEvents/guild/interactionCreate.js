@@ -18,7 +18,7 @@ module.exports.run = async (client, interaction) => {
 
         if (client.dev.has(true) && interaction.user.id !== client.owner) {
             return interaction.reply({
-                content: `👋🏻 Hey Users\n**${client.user} is under maintenance right now**`,
+                content: `👋🏻 Xin chào người dùng\n**${client.user} hiện đang được bảo trì**`,
                 components: [row],
                 ephemeral: true,
             });
@@ -35,7 +35,7 @@ module.exports.run = async (client, interaction) => {
 
         if (userBan && userBan.isBanned === true && interaction.user.id !== client.owner) {
             return interaction.reply({
-                content: `<:icon_cross:1200797307805892651>  | You are banned from using ${client.user}, click the button support to appeal.`,
+                content: `✖️  | Bạn bị cấm sử dụng ${client.user}, hãy nhấp vào nút hỗ trợ để khiếu nại.`,
                 components: [row],
                 ephemeral: true,
             });
@@ -53,7 +53,7 @@ module.exports.run = async (client, interaction) => {
 
         if (botMissingPermissions.length > 0) {
             return interaction.reply({
-                content: `<:icon_cross:1200797307805892651>  | I don't have one of these permissions \`ViewChannel\`, \`SendMessages\`, \`EmbedLinks\`.\nPlease double check them in your server role & channel settings.`,
+                content: `✖️  | Tôi không có một trong các quyền này \`ViewChannel\`, \`SendMessages\`, \`EmbedLinks\`.\nVui lòng kiểm tra kỹ chúng trong cài đặt kênh và vai trò máy chủ của bạn.`,
                 components: [row],
                 ephemeral: true,
             });
@@ -63,7 +63,7 @@ module.exports.run = async (client, interaction) => {
 
         // CHECK BOT COMMANDS PERMISSIONS
         if (!interaction.guild.members.cache.get(client.user.id).permissions.has(command.permissions.bot || [])) {
-            warning.setDescription(`<:icon_cross:1200797307805892651>  | I don't have permission \`${command.permissions.bot.join(", ")}\` to execute this command.`);
+            warning.setDescription(`🔶  | Tôi không có quyền \`${command.permissions.bot.join(", ")}\` để thực thi lệnh này.`);
 
             return interaction.reply({ embeds: [warning], components: [row], ephemeral: true });
         }
@@ -71,7 +71,7 @@ module.exports.run = async (client, interaction) => {
         // CHECK USER PERMISSIONS
         if (!interaction.member.permissions.has(command.permissions.user || [])) {
             warning.setDescription(
-                `<:icon_cross:1200797307805892651>  | You don't have permission \`${command.permissions.user.join(", ")}\` to execute this command.`,
+                `✖️  | Bạn không có quyền \`${command.permissions.user.join(", ")}\` để thực thi lệnh này.`,
             );
 
             return interaction.reply({ embeds: [warning], components: [row], ephemeral: true });
@@ -81,14 +81,14 @@ module.exports.run = async (client, interaction) => {
         let player = client.poru.players.get(interaction.guild.id);
         //Player check
         if (command.settings.player && !player) {
-            warning.setDescription(`<:icon_cross:1200797307805892651>  | There isn't player exists for this server.`);
+            warning.setDescription(`✖️  | Không có trình phát nào khả dụng cho máy chủ này.`);
 
             return interaction.reply({ embeds: [warning], ephemeral: true });
         }
 
         // CURRENT PLAYING CHECK
         if (command.settings.current && !player.currentTrack) {
-            warning.setDescription(`<:icon_cross:1200797307805892651>  | There isn't any current playing right now.`);
+            warning.setDescription(`✖️  | Không có bất kỳ bài hát hiện tại nào.`);
 
             return interaction.reply({ embeds: [warning], ephemeral: true });
         }
@@ -98,7 +98,7 @@ module.exports.run = async (client, interaction) => {
         //In Voice Channel Check
         if (command.settings.inVc) {
             if (!channel) {
-                warning.setDescription(`<:icon_cross:1200797307805892651>  | You must be in a voice channel to use this command.`);
+                warning.setDescription(`✖️  | Bạn phải ở trong kênh thoại để sử dụng lệnh này.`);
 
                 return interaction.reply({ embeds: [warning], ephemeral: true });
             }
@@ -111,9 +111,9 @@ module.exports.run = async (client, interaction) => {
                     .has(command.permissions.channel || [])
             ) {
                 warning.setDescription(
-                    `<:icon_cross:1200797307805892651>  | I don't have permission \`${command.permissions.channel.join(
+                    `✖️  | Tôi không có quyền \`${command.permissions.channel.join(
                         ", ",
-                    )}\` to execute this command in this channel.`,
+                    )}\` để thực hiện lệnh này trong kênh.`,
                 );
 
                 return interaction.reply({ embeds: [warning], components: [row], ephemeral: true });
@@ -123,7 +123,7 @@ module.exports.run = async (client, interaction) => {
         // SAME VOICE CHANNEL CHECK
         if (command.settings.sameVc) {
             if (!channel || interaction.member.voice.channelId !== interaction.guild.members.me.voice.channelId) {
-                warning.setDescription(`<:icon_cross:1200797307805892651>  | You must be on the same voice channel as mine to use this command.`);
+                warning.setDescription(`✖️  | Bạn phải ở cùng kênh thoại với tôi để sử dụng lệnh này.`);
 
                 return interaction.reply({ embeds: [warning], ephemeral: true });
             }
@@ -136,9 +136,9 @@ module.exports.run = async (client, interaction) => {
                     .has(command.permissions.channel || [])
             ) {
                 warning.setDescription(
-                    `<:icon_cross:1200797307805892651>  | I don't have permission \`${command.permissions.channel.join(
+                    `✖️  | Tôi không có quyền \`${command.permissions.channel.join(
                         ", ",
-                    )}\` to execute this command in this channel.`,
+                    )}\` để thực hiện lệnh này trong kênh.`,
                 );
 
                 return interaction.reply({ embeds: [warning], components: [row], ephemeral: true });
@@ -148,7 +148,7 @@ module.exports.run = async (client, interaction) => {
         // PREMIUM USER CHECK
         if (command.settings.premium) {
             if (user && !user.isPremium) {
-                warning.setDescription(`<:icon_cross:1200797307805892651>  | You're not premium user!`);
+                warning.setDescription(`😢  | Bạn không phải là người dùng cao cấp!`);
 
                 return interaction.reply({ embeds: [warning], components: [row], ephemeral: true });
             }
@@ -156,7 +156,7 @@ module.exports.run = async (client, interaction) => {
 
         // CHECK OWNER
         if (command.settings.owner && interaction.user.id !== client.owner) {
-            warning.setDescription(`<:icon_cross:1200797307805892651>  | Only my owner can use this command!\n\nAlways Listen To Premium Music`);
+            warning.setDescription(`😢  | Chỉ chủ sở hữu của tôi mới có thể sử dụng lệnh này!\n\nPremium`);
 
             return interaction.reply({ embeds: [warning], ephemeral: true });
         }
@@ -167,7 +167,7 @@ module.exports.run = async (client, interaction) => {
         } catch (error) {
             console.log(error);
 
-            warning.setDescription(`<:icon_cross:1200797307805892651>  | Something went wrong.`);
+            warning.setDescription(`✖️  | Đã xảy ra lỗi.`);
 
             return interaction.editReply({ embeds: [warning], components: [row], ephmeral: true });
         }
