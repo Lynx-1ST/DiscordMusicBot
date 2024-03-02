@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "ping",
-    description: "**Đang lấy độ trễ máy chủ** <a:loading:1213403030616018944>",
+    description: "Lấy độ trễ máy chủ <a:loading:1213403030616018944>",
     category: "Information",
     permissions: {
         bot: [],

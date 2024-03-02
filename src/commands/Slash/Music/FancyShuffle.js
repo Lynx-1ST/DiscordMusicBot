@@ -3,7 +3,7 @@ const GControl = require("../../../settings/models/Control.js");
 
 module.exports = {
     name: "shuffle",
-    description: "Shuffle the current player queue.",
+    description: "Xáo trộn hàng đợi người chơi hiện tại.",
     category: "Music",
     permissions: {
         bot: [],

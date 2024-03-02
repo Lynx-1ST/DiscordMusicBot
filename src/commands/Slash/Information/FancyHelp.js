@@ -11,7 +11,7 @@ const { supportUrl, inviteUrl, voteUrl } = require("../../../settings/config.js"
 
 module.exports = {
     name: "help",
-    description: "Display all commands of the bot.",
+    description: "Hiển thị tất cả các lệnh của bot.",
     category: "Information",
     permissions: {
         bot: [],

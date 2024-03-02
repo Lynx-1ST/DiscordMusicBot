@@ -51,7 +51,7 @@ module.exports.run = async (client, oldState, newState) => {
                 newPlayer ? await player.destroy() : oldState.guild.members.me.voice.channel.leave();
 
                 const row = new ActionRowBuilder().addComponents(
-                    new ButtonBuilder().setLabel("Support Server").setURL(supportUrl).setStyle(ButtonStyle.Link),
+                    new ButtonBuilder().setLabel("Support 🛡️").setURL(supportUrl).setStyle(ButtonStyle.Link),
                 );
 
                 const TimeoutEmbed = new EmbedBuilder()

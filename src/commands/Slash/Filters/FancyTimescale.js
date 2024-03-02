@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "timescale",
-    description: "Set the current player filter to Timescale.",
+    description: "Đặt bộ lọc trình phát hiện tại thành Thang thời gian.",
     category: "Filters",
     permissions: {
         bot: [],

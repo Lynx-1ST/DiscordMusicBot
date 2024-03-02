@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "generate",
-    description: "Generate premium user code.",
+    description: "Tạo mã người dùng cao cấp.",
     category: "Developer",
     permissions: {
         bot: [],

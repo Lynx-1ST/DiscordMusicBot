@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "autoplay",
-    description: "Autoplay random related song/s.",
+    description: "Tự động phát/số bài hát liên quan ngẫu nhiên.",
     category: "Premium",
     permissions: {
         bot: [],

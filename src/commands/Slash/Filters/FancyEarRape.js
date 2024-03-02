@@ -3,7 +3,7 @@ const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "earrape",
-    description: "Set the current player filter to EarRape.",
+    description: "Đặt bộ lọc trình phát hiện tại thành EarRape.",
     category: "Filters",
     permissions: {
         bot: [],

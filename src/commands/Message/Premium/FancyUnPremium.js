@@ -10,12 +10,12 @@ module.exports = {
     run: async (client, message, args) => {
         let id = args[0];
 
-        if (!id) return message.reply({ content: "<:icon_cross:1200797307805892651> | Please provide a user ID." });
+        if (!id) return message.reply({ content: "✖️ | Please provide a user ID." });
 
         let REGEX = new RegExp(/^[0-9]+$/);
 
         if (!REGEX.test(id)) {
-            const embed = new EmbedBuilder().setDescription(`<:icon_cross:1200797307805892651> | The ID must be a number.`).setColor(client.color);
+            const embed = new EmbedBuilder().setDescription(`✖️ | The ID must be a number.`).setColor(client.color);
 
             return message.reply({ embeds: [embed] });
         }
@@ -24,7 +24,7 @@ module.exports = {
 
         if (!user) {
             const embed = new EmbedBuilder()
-                .setDescription(`\<:icon_cross:1200797307805892651>\ | \`${id}\` is not a premium user or not in my database.`)
+                .setDescription(`\✖️\ | \`${id}\` is not a premium user or not in my database.`)
                 .setColor(client.color);
 
             return message.reply({ embeds: [embed] });
@@ -43,13 +43,13 @@ module.exports = {
             client.premium.set(userData.Id, newUser);
 
             const embed = new EmbedBuilder()
-                .setDescription(`\<:Check:1200809259928129547>\ | You've successfully remove \`${id}\` premium status.`)
+                .setDescription(`\✖️\ | You've successfully remove \`${id}\` premium status.`)
                 .setColor(client.color);
 
             return message.reply({ embeds: [embed] });
         } else {
             const embed = new EmbedBuilder()
-                .setDescription(`\<:icon_cross:1200797307805892651>\ | \`${id}\` premium status already removed or not a premium user.`)
+                .setDescription(`\✖️\ | \`${id}\` premium status already removed or not a premium user.`)
                 .setColor(client.color);
 
             return message.reply({ embeds: [embed] });

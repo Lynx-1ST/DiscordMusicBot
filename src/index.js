@@ -13,12 +13,4 @@ client.connect();
 
 module.exports = client;
 
-/**
- * @INFO
- * Bot Coded by WhoFancy?#0000 | https://dsc.gg/allpbprivate
- * @INFO
- * Work for Fancy Music | https://dsc.gg/allpbprivate
- * @INFO
- * Please Mention Us Fancy Music, When Using This Code!
- * @INFO
- */
+

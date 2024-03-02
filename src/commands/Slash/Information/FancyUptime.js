@@ -4,7 +4,7 @@ const pretty = require('pretty-ms');
 
 module.exports = {
     name: "uptime",
-    description: "Returns information about bot uptime",
+    description: "Trả về thông tin về thời gian hoạt động của bot",
     category: "Information",
     permissions: {
         bot: [],
@@ -34,7 +34,7 @@ module.exports = {
 
         const embed = new EmbedBuilder()
             .setTitle(`<a:disk:1200807327616479364> Uptime Information!`)
-            .setDescription(`\`\`\`yml\n❓ Trạng thái : Online\n⏲ Uptime : ${pretty(client.uptime)}\n<a:loading:1213403030616018944> Uptime hệ thống : ${dDisplay + hDisplay + mDisplay + sDisplay}\n\`\`\``)
+            .setDescription(`\`\`\`yml\n❓ Trạng thái : Online\n⏲ Uptime : ${pretty(client.uptime)}\n✈️ Uptime hệ thống : ${dDisplay + hDisplay + mDisplay + sDisplay}\n\`\`\``)
             .setColor(client.color);
 
         interaction.followUp({ embeds: [embed] });

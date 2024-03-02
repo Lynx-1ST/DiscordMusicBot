@@ -15,10 +15,10 @@ module.exports = {
         const plan = args[0];
         const plans = ["minutely", "daily", "weekly", "monthly", "yearly", "lifetime"];
 
-        if (!plan) return message.reply({ content: `\<:icon_cross:1200797307805892651>\ | You didn't provide any type of plans: \`${plans.join(", ")}\`` });
+        if (!plan) return message.reply({ content: `\✖️\ | You didn't provide any type of plans: \`${plans.join(", ")}\`` });
 
         if (!plans.includes(plan))
-            return message.reply({ content: `\<:icon_cross:1200797307805892651>\ | You didn't provide any valid type of plans: \`${plans.join(", ")}\`` });
+            return message.reply({ content: `\✖️\ | You didn't provide any valid type of plans: \`${plans.join(", ")}\`` });
 
         let amount = args[1];
 

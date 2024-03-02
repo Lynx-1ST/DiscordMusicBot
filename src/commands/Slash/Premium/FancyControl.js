@@ -3,21 +3,21 @@ const GControl = require("../../../settings/models/Control.js");
 
 module.exports = {
     name: "control",
-    description: "Display or hide the player control button.",
+    description: "Hiển thị hoặc ẩn nút điều khiển trình phát.",
     category: "Premium",
     options: [
         {
             name: "mode",
-            description: "Choose display or hide",
+            description: "Chọn hiển thị hoặc ẩn",
             type: ApplicationCommandOptionType.String,
             required: true,
             choices: [
                 {
-                    name: "Display",
+                    name: "Hiển thị",
                     value: "display",
                 },
                 {
-                    name: "Hide",
+                    name: "Ẩn",
                     value: "hide",
                 },
             ],

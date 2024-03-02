@@ -3,7 +3,7 @@ const GControl = require("../../../settings/models/Control.js");
 
 module.exports = {
     name: "skip",
-    description: "Skip the current played song.",
+    description: "Bỏ qua bài hát đang phát.",
     category: "Music",
     permissions: {
         bot: [],

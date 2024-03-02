@@ -5,12 +5,12 @@ const User = require("../../../settings/models/User.js");
 
 module.exports = {
     name: "redeem",
-    description: "Redeem your premium code.",
+    description: "Đổi mã cao cấp của bạn.",
     category: "Premium",
     options: [
         {
             name: "code",
-            description: "Provide valid code.",
+            description: "Cung cấp mã hợp lệ.",
             type: ApplicationCommandOptionType.String,
             required: true,
         },

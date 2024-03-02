@@ -3,12 +3,12 @@ const GControl = require("../../../settings/models/Control.js");
 
 module.exports = {
     name: "volume",
-    description: "Set the volume of the current player.",
+    description: "Đặt âm lượng của trình phát hiện tại.",
     category: "Music",
     options: [
         {
             name: "amount",
-            description: "The number of volume which you want to set.",
+            description: "Số lượng âm lượng bạn muốn đặt.",
             type: ApplicationCommandOptionType.Number,
             required: false,
             min_value: 1,

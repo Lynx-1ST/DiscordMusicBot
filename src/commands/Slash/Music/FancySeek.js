@@ -3,12 +3,12 @@ const formatDuration = require("../../../structures/FormatDuration.js");
 
 module.exports = {
     name: "seek",
-    description: "Seek the current played song.",
+    description: "Tìm kiếm bài hát đang phát.",
     category: "Music",
     options: [
         {
             name: "seconds",
-            description: "New position length of the song.",
+            description: "Độ dài vị trí mới của bài hát.",
             type: ApplicationCommandOptionType.Number,
             required: true,
             min_value: 0,

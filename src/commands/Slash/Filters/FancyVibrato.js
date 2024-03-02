@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "vibrato",
-    description: "Set the current player filter to Vibrato.",
+    description: "Đặt bộ lọc trình phát hiện tại thành Vibrato.",
     category: "Filters",
     permissions: {
         bot: [],

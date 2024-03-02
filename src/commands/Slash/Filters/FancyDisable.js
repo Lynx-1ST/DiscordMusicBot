@@ -3,7 +3,7 @@ const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "disable",
-    description: "Clear the current player filters.",
+    description: "Xóa bộ lọc trình phát hiện tại.",
     category: "Filters",
     permissions: {
         bot: [],

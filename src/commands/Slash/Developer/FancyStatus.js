@@ -4,7 +4,7 @@ let cpuStat = require("cpu-stat");
 
 module.exports = {
     name: "status",
-    description: "Check status of bot!.",
+    description: "Kiểm tra trạng thái của bot!",
     category: "Developer",
     permissions: {
         bot: [],

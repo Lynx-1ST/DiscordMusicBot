@@ -11,33 +11,33 @@ module.exports = {
         let id = args[0];
         let type = args[1];
 
-        if (!id) return message.reply({ content: "<:icon_cross:1200797307805892651> | Please provide a user ID." });
+        if (!id) return message.reply({ content: "✖️ | Please provide a user ID." });
 
         let REGEX = new RegExp(/^[0-9]+$/);
 
         if (!REGEX.test(id)) {
-            const embed = new EmbedBuilder().setDescription(`\<:icon_cross:1200797307805892651>\ | The ID must be a number.`).setColor(client.color);
+            const embed = new EmbedBuilder().setDescription(`\✖️\ | The ID must be a number.`).setColor(client.color);
 
             return message.reply({ embeds: [embed] });
         }
 
-        if (!type) return message.reply({ content: "\<:icon_cross:1200797307805892651>\ | Please provide a type. `enable` or `disable`." });
+        if (!type) return message.reply({ content: "\✖️\ | Please provide a type. `enable` or `disable`." });
 
         let typeMode = ["enable", "disable"];
 
-        if (!typeMode.includes(type)) return message.reply({ content: "\<:icon_cross:1200797307805892651>\ | Please provide a valid type. `enable` or `disable`." });
+        if (!typeMode.includes(type)) return message.reply({ content: "\✖️\ | Please provide a valid type. `enable` or `disable`." });
 
         const user = await Ban.findOne({ userID: id });
 
         if (!user) {
-            const embed = new EmbedBuilder().setDescription(`\<:icon_cross:1200797307805892651>\ | \`${id}\` is not in my database.`).setColor(client.color);
+            const embed = new EmbedBuilder().setDescription(`\✖️\ | \`${id}\` is not in my database.`).setColor(client.color);
 
             return message.reply({ embeds: [embed] });
         }
 
         if (type === "enable") {
             if (user.isBanned === true) {
-                const embed = new EmbedBuilder().setDescription(`\<:icon_cross:1200797307805892651>\ | \`${id}\` is already banned.`).setColor(client.color);
+                const embed = new EmbedBuilder().setDescription(`\✖️\ | \`${id}\` is already banned.`).setColor(client.color);
 
                 return message.reply({ embeds: [embed] });
             } else {
@@ -47,13 +47,13 @@ module.exports = {
 
                 await user.save();
 
-                const embed = new EmbedBuilder().setDescription(`<:Check:1200809259928129547> | You've successfully banned \`${id}\`.`).setColor(client.color);
+                const embed = new EmbedBuilder().setDescription(`<a:check_mark:1213409895483965490> | You've successfully banned \`${id}\`.`).setColor(client.color);
 
                 return message.reply({ embeds: [embed] });
             }
         } else if (type === "disable") {
             if (user.isBanned === false) {
-                const embed = new EmbedBuilder().setDescription(`\<:icon_cross:1200797307805892651>\ | \`${id}\` is not banned.`).setColor(client.color);
+                const embed = new EmbedBuilder().setDescription(`\✖️\ | \`${id}\` is not banned.`).setColor(client.color);
 
                 return message.reply({ embeds: [embed] });
             } else {
@@ -63,7 +63,7 @@ module.exports = {
 
                 await user.save();
 
-                const embed = new EmbedBuilder().setDescription(`<:Check:1200809259928129547> | You've successfully unbanned \`${id}\`.`).setColor(client.color);
+                const embed = new EmbedBuilder().setDescription(`<a:check_mark:1213409895483965490> | You've successfully unbanned \`${id}\`.`).setColor(client.color);
 
                 return message.reply({ embeds: [embed] });
             }

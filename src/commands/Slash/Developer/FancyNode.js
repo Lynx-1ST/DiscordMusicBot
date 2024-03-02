@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "node",
-    description: "Check node of bot!.",
+    description: "Kiểm tra nút của bot!",
     category: "Developer",
     permissions: {
         bot: [],

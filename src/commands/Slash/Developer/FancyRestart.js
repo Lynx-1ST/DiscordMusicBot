@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "restart",
-    description: "Restart The System.",
+    description: "Khởi động lại hệ thống.",
     category: "Developer",
     permissions: {
         bot: [],

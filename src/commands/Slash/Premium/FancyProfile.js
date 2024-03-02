@@ -4,7 +4,7 @@ const User = require("../../../settings/models/User.js");
 
 module.exports = {
     name: "profile",
-    description: "Show your premium status info.",
+    description: "Hiển thị thông tin trạng thái cao cấp của bạn.",
     category: "Premium",
     permissions: {
         bot: [],

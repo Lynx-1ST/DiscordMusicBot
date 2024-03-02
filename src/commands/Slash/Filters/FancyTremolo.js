@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "tremolo",
-    description: "Set the current player filter to Tremolo.",
+    description: "Đặt bộ lọc trình phát hiện tại thành Tremolo.",
     category: "Filters",
     permissions: {
         bot: [],

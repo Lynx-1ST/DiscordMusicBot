@@ -28,16 +28,12 @@ module.exports.run = async (client) => {
         const status = [
             { 
               type: ActivityType.Listening, 
-              name: "/help" 
+              name: "/help | Lynx_1ST 🔰"
             },
             { 
               type: ActivityType.Watching,
-              name: `On ${servers} Server with ${members} Users` 
+              name: `Trong ${servers} máy chủ với ${members} người dùng`
             },
-            { 
-              type: ActivityType.Playing, 
-              name: "TEC"
-            }
         ];
 
         const index = Math.floor(Math.random() * status.length);

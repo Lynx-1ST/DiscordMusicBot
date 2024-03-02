@@ -3,7 +3,7 @@ const GControl = require("../../../settings/models/Control.js");
 
 module.exports = {
     name: "stop",
-    description: "Stop or disconnect the player.",
+    description: "Dừng hoặc ngắt kết nối trình phát.",
     category: "Music",
     permissions: {
         bot: [],

@@ -4,7 +4,7 @@ const moment = require("moment");
 
 module.exports = {
     name: "list",
-    description: "Get list of all premium user",
+    description: "Nhận danh sách tất cả người dùng cao cấp",
     category: "Developer",
     permissions: {
         bot: [],

@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
   name: "owner-help",
-  description: "Display all commands for the owner.",
+  description: "Hiển thị tất cả các lệnh cho chủ sở hữu.",
   category: "Developer",
   permissions: {
     bot: [],

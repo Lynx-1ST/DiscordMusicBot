@@ -41,7 +41,7 @@ module.exports.run = async (client, message) => {
 
     if (client.dev.has(true) && message.author.id !== client.owner) {
         return message.reply({
-            content: `👋🏻 Hey Users\n**${client.user.username} is under maintenance right now**`,
+            content: `👋🏻 Xin chào người dùng\n**${client.user.username} hiện đang được bảo trì**`,
             components: [row],
         });
     }

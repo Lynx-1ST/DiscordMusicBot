@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "nightcore",
-    description: "Set the current player filter to Nightcore.",
+    description: "Đặt bộ lọc trình phát hiện tại thành Nightcore.",
     category: "Filters",
     permissions: {
         bot: [],

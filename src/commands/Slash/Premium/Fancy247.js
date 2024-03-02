@@ -4,7 +4,7 @@ const User = require("../../../settings/models/User.js");
 
 module.exports = {
     name: "247",
-    description: "Toggle enable 24/7 in voice channel.",
+    description: "Bật tắt 24/7 trong kênh thoại.",
     category: "Premium",
     permissions: {
         bot: ["Speak", "Connect"],

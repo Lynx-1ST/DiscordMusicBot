@@ -3,7 +3,7 @@ const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "bassboost",
-    description: "Set the current player filter to BassBoost.",
+    description: "Đặt bộ lọc trình phát hiện tại thành BassBoost.",
     category: "Filters",
     permissions: {
         bot: [],
