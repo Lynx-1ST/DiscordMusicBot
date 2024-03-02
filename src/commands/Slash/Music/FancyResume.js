@@ -27,7 +27,7 @@ module.exports = {
         if (Control.playerControl === "enable") {
             const ctrl = new EmbedBuilder()
                 .setColor(client.color)
-                .setDescription(`\<:icon_cross:1200797307805892651>\ | You can't use this command as the player control was enable!`);
+                .setDescription(`\✖️\ | Bạn không thể sử dụng lệnh này vì điều khiển trình phát đã được bật!`);
             return interaction.editReply({ embeds: [ctrl] });
         }
 
@@ -36,11 +36,11 @@ module.exports = {
         if (player.isPaused) {
             await player.pause(false);
 
-            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\<a:play_pause:1200812463764029583>\ | Song has been: \`Resumed\``);
+            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\<a:check_mark:1213409895483965490>\ | Bài hát đã được: \`Tiếp tục\``);
 
             return interaction.editReply({ embeds: [embed] });
         } else {
-            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`<:icon_cross:1200797307805892651>\` | Song is not: \`Paused\``);
+            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`<a:check_mark:1213409895483965490>\` | Bài hát không được: \`Tạm dừng\``);
 
             return interaction.editReply({ embeds: [embed] });
         }
