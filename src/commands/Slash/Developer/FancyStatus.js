@@ -42,21 +42,21 @@ module.exports = {
             }
             const embed = new EmbedBuilder()
                 .setAuthor({
-                    name: `${message.guild.members.me.displayName} Status Info!`,
+                    name: `${message.guild.members.me.displayName} Bảng Trạng Thái!`,
                     iconURL: message.guild.iconURL({ dynamic: true }),
                 })
                 .addFields([
-                    { name: "\<a:Bot:1200818564198846594> | Client", value: `\`\`\`Servers: ${scount}\nChannels: ${ccount}\nUsers: ${mcount}\`\`\``, inline: false },
+                    { name: "<:zinfoHome:1213008332906958888> | Thiết bị", value: `\`\`\`Máy chủ: ${scount}\nKênh: ${ccount}\nNgười dùng: ${mcount}\`\`\``, inline: false },
                     {
-                        name: "<a:cpu:1200818663289274478> | CPU",
-                        value: `\`\`\`Cpu: ${os.cpus().map((i) => `${i.model}`)[0]}\nLoad: ${percent.toFixed(
+                        name: "<:zcmtyOwner:1212982871011360768> | CPU",
+                        value: `\`\`\`CPU: ${os.cpus().map((i) => `${i.model}`)[0]}\nTải: ${percent.toFixed(
                             2
-                        )}%\nPlatform: ${os.platform()}\`\`\``,
+                        )}%\nNền tảng: ${os.platform()}\`\`\``,
                         inline: false,
                     },
                     {
-                        name: "<a:server:1200818722227617922> | RAM",
-                        value: `\`\`\`RAM Used: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${(
+                        name: "<:zlogServer:1213005861555933275> | RAM",
+                        value: `\`\`\`Sử dụng: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${(
                             os.totalmem() /
                             1024 /
                             1024 /
@@ -65,13 +65,13 @@ module.exports = {
                         inline: false,
                     },
                     {
-                        name: "<a:discord:1200818807703355432> | Discord",
-                        value: `\`\`\`Discord.js: v${version}\nNode: ${process.version}\nAPI Websocket Ping: ${Math.round(
+                        name: "<a:pnv_logodiscord:1213408091882922014> | Discord",
+                        value: `\`\`\`Discord.js: v${version}\nNode: ${process.version}\nĐộ trễ API/Websocket: ${Math.round(
                             client.ws.ping
                         )}ms\`\`\``,
                         inline: false,
                     },
-                    { name: "<:System:1200815003721273344> | System", value: `\`\`\`Uptime: ${dDisplay + hDisplay + mDisplay + sDisplay}\`\`\``, inline: true },
+                    { name: "<:pnv_supporter:1212984198932078632> | Hệ thống", value: `\`\`\`Uptime: ${dDisplay + hDisplay + mDisplay + sDisplay}\`\`\``, inline: true },
                 ])
                 .setColor(client.color)
                 .setTimestamp(Date.now());
