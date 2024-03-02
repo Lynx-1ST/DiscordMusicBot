@@ -27,14 +27,14 @@ module.exports = {
         if (Control.playerControl === "enable") {
             const ctrl = new EmbedBuilder()
                 .setColor(client.color)
-                .setDescription(`<:icon_cross:1200797307805892651> | You can't use this command as the player control was enable!`);
+                .setDescription(`\✖️\ | Bạn không thể sử dụng lệnh này vì điều khiển trình phát đã được bật!`);
             return interaction.editReply({ embeds: [ctrl] });
         }
 
         const player = client.poru.players.get(interaction.guild.id);
 
         if (!player.previousTrack) {
-            const embed = new EmbedBuilder().setDescription(`\<:icon_cross:1200797307805892651>\ | Previous song was: \`Not found\``).setColor(client.color);
+            const embed = new EmbedBuilder().setDescription(`\✖️\ | Bài hát trước đó: \`Không tìm thấy\``).setColor(client.color);
 
             return interaction.editReply({ embeds: [embed] });
         }
@@ -42,7 +42,7 @@ module.exports = {
         await player.queue.unshift(player.previousTrack);
         await player.stop();
 
-        const embed = new EmbedBuilder().setColor(client.color).setDescription(`\<:previous:1200794756314300497>\ | Song has been: \`Previoused\``);
+        const embed = new EmbedBuilder().setColor(client.color).setDescription(`\<:previous:1213411418674696242>\ | Bài hát đã được: \`Tua lại\``);
 
         return interaction.editReply({ embeds: [embed] });
     },
