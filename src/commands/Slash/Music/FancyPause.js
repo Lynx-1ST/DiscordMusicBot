@@ -3,7 +3,7 @@ const GControl = require("../../../settings/models/Control.js");
 
 module.exports = {
     name: "pause",
-    description: "Pause current played song.",
+    description: "Tạm dừng bài hát đang phát.",
     category: "Music",
     permissions: {
         bot: [],
