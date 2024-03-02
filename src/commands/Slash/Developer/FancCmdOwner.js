@@ -23,33 +23,33 @@ module.exports = {
 
     // Define premium and developer commands for better readability
     const premiumCommands = [
-      "f?generate : Generate premium user code.",
-      "f?unpremium : Delete user from premium.",
-      "f?list : Get list of all premium users.",
+      "+generate : Tạo mã người dùng cao cấp. ",
+      "+unpremium : Xóa người dùng khỏi bản cao cấp.",
+      "+list : Nhận danh sách tất cả người dùng cao cấp.",
     ].join("\n");
 
     const developerCommands = [
-      "f?ban : Ban a user from using the bot.",
-      "f?maintenance : Enable maintenance mode.",
-      "f?eval : Bot evaluation.",
+      "+ban : Cấm người dùng sử dụng bot.",
+      "+maintenance : Kích hoạt chế độ bảo trì.",
+      "+eval : Đánh giá bot.",
     ].join("\n");
 
     // Build the embed with a more professional and organized structure
     const embed = new EmbedBuilder()
-      .setTitle("Owner Commands")
+      .setTitle("Lệnh của chủ sở hữu")
       .setDescription(`
-        <:Premium:1200817621503840276> **Premium Commands**
+        <a:99_yellowcrown:1213402242015699074> **Lệnh cao cấp**
         \`\`\`yaml
         ${premiumCommands}
         \`\`\`
 
-        <:developer:1200817682971373783> **Developer Commands**
+        <:developer:1212982747950350346> **Lệnh Developers**
         \`\`\`yaml
         ${developerCommands}
         \`\`\`
       `)
       .setColor(client.color)
-      .setURL("https://discord.gg/7MEHnM6T87"); // Replace with your actual support server URL
+      .setURL("https://github.com/Lynx-1ST"); // Replace with your actual support server URL
 
     // Send the edited reply with the embed
     return interaction.editReply({ embeds: [embed] });
