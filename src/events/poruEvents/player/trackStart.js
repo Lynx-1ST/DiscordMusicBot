@@ -18,15 +18,13 @@ module.exports.run = async (client, player, track) => {
     const trackDuration = track.info.isStream ? "LIVE" : formatDuration(track.info.length);
     const trackAuthor = track.info.author ? authors : "Unknown";
     const trackTitle = track.info.title ? titles : "Unknown";
-    const authorImage = track.author.image;
-
     const Started = new EmbedBuilder()
         .setAuthor({
             name: `--- ĐANG PHÁT 💎---`,
             iconURL: "https://cdn.discordapp.com/emojis/1189604441213644851.gif",
         })
-        .setThumbnail(track.author.image)
-        .setDescription(`**[${trackTitle}](${track.info.uri})**${track.info.image}`)
+        .setThumbnail(client.user.displayAvatarURL())
+        .setDescription(`**[${trackTitle}](${track.info.uri})**\n\n![Image](${track.info.image})`)
         .addFields([
             { name: `Tác giả:`, value: `${trackAuthor}`, inline: true },
             { name: `Yêu cầu bởi:`, value: `${track.info.requester}`, inline: true },
@@ -283,7 +281,7 @@ module.exports.run = async (client, player, track) => {
                         { name: `Âm lượng:`, value: `${player.volume}%`, inline: true },
                         { name: `Hàng chờ còn lại:`, value: `${player.queue.length}`, inline: true },
                         {
-                            name: `Tiến trình bài hát: \`[${currentPosition}]\``,
+                            name: `Tiến trình bài hát \`[${currentPosition}]\``,
                             value: `\`\`\`${Emoji} ${"─".repeat(Part) + "🔵" + "─".repeat(30 - Part)}\`\`\``,
                             inline: false,
                         },
