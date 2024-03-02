@@ -34,7 +34,7 @@ module.exports = {
 
         const embed = new EmbedBuilder()
             .setTitle(`<a:disk:1200807327616479364> Uptime Information!`)
-            .setDescription(`\`\`\`yml\n❓ Status : Online\n⏲ Uptime : ${pretty(client.uptime)}\n<:System:1200815003721273344> System Uptime : ${dDisplay + hDisplay + mDisplay + sDisplay}\n\`\`\``)
+            .setDescription(`\`\`\`yml\n❓ Trạng thái : Online\n⏲ Uptime : ${pretty(client.uptime)}\n<a:loading:1213403030616018944> Uptime hệ thống : ${dDisplay + hDisplay + mDisplay + sDisplay}\n\`\`\``)
             .setColor(client.color);
 
         interaction.followUp({ embeds: [embed] });
