@@ -21,10 +21,11 @@ module.exports.run = async (client, player, track) => {
     const Started = new EmbedBuilder()
         .setAuthor({
             name: `--- ĐANG PHÁT 💎---`,
-            iconURL: "https://cdn.discordapp.com/emojis/1189604441213644851.gif",
+            iconURL: "https://cdn.discordapp.com/emojis/1189604441213644851.gif", // Thay "track.info.authorImage" bằng đường dẫn hình ảnh của tác giả
         })
         .setDescription(`**[${trackTitle}](${track.info.uri})**`)
-        .setImage(track.info.image) // Sử dụng .setImage() thay vì .setThumbnail()
+        .setThumbnail(client.user.displayAvatarURL())
+        .setImage(track.info.image)
         .addFields([
             { name: `Tác giả:`, value: `${trackAuthor}`, inline: true },
             { name: `Yêu cầu bởi:`, value: `${track.info.requester}`, inline: true },
@@ -32,6 +33,7 @@ module.exports.run = async (client, player, track) => {
         ])
         .setColor(client.color)
         .setFooter({ text: `Chế độ Lặp lại: ${capital(player.loop)} • Hàng chờ còn lại: ${player.queue.length} • Âm lượng: ${player.volume}%` });
+
 
     const emoji = client.emoji.button;
 
