@@ -37,7 +37,7 @@ module.exports = {
         if (Control.playerControl === "enable") {
             const ctrl = new EmbedBuilder()
                 .setColor(client.color)
-                .setDescription(`\<:icon_cross:1200797307805892651>\ | You can't use this command as the player control was enable!`);
+                .setDescription(`\\✖️\ | Bạn không thể sử dụng lệnh này vì điều khiển trình phát đã được bật!`);
             return interaction.editReply({ embeds: [ctrl] });
         }
 
@@ -45,13 +45,13 @@ module.exports = {
         const value = interaction.options.getNumber("amount");
 
         if (!value) {
-            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\<a:Volume_Up:1200814807318798337>\ | Current player volume: \`${player.volume}%\``);
+            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\🔊\ | Âm lượng: \`${player.volume}%\``);
 
             return interaction.editReply({ embeds: [embed], ephemeral: true });
         } else {
             await player.setVolume(value);
 
-            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\<a:Volume_Up:1200814807318798337>\ | Volume has been set to: \`${value}%\``);
+            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\🔊\ | Âm lượng: \`${value}%\``);
 
             return interaction.editReply({ embeds: [embed], ephemeral: true });
         }
