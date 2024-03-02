@@ -34,7 +34,7 @@ module.exports = {
         if (player && interaction.member.voice.channelId !== interaction.guild.members.me.voice.channelId) {
             const embed = new EmbedBuilder()
                 .setColor(client.color)
-                .setDescription(`\<:icon_cross:1200797307805892651>\ | You must be on the same voice channel as mine to use this command.`)
+                .setDescription(`\✖️\ | Bạn phải ở cùng kênh thoại với tôi để sử dụng lệnh này.`)
                 .setTimestamp();
 
             return interaction.reply({ embeds: [embed], ephemeral: true });
@@ -78,7 +78,7 @@ module.exports = {
 
             const embed = new EmbedBuilder()
                 .setColor(client.color)
-                .setDescription(`<:Check:1200809259928129547> | **[${playlistInfo.name}](${song})** • \`${tracks.length}\` tracks • ${track.info.requester}`);
+                .setDescription(`<a:check_mark:1213409895483965490> | **[${playlistInfo.name}](${song})** • \`${tracks.length}\` bản nhạc • ${track.info.requester}`);
 
             await interaction.editReply({ embeds: [embed] });
             if (!player.isPlaying && !player.isPaused) return player.play();
@@ -91,7 +91,7 @@ module.exports = {
             const embed = new EmbedBuilder()
                 .setColor(client.color)
                 .setDescription(
-                    `<:Check:1200809259928129547> | **[${track.info.title ? track.info.title : "Unknown"}](${track.info.uri})** • \`${
+                    `<a:check_mark:1213409895483965490> | **[${track.info.title ? track.info.title : "Unknown"}](${track.info.uri})** • \`${
                         track.info.isStream ? "LIVE" : formatDuration(track.info.length)
                     }\` • ${track.info.requester}`,
                 );
@@ -99,7 +99,7 @@ module.exports = {
             await interaction.editReply({ embeds: [embed] });
             if (!player.isPlaying && !player.isPaused) return player.play();
         } else if (loadType === "LOAD_FAILED" || loadType === "NO_MATCHES") {
-            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`<:icon_cross:1200797307805892651>\` | Song was no found or Failed to load song!`);
+            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`✖️\` | Không tìm thấy bài hát hoặc không tải được bài hát!`);
 
             return interaction.editReply({ embeds: [embed] });
         }
