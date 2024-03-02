@@ -33,14 +33,14 @@ module.exports = {
         const track = interaction.options.getNumber("position");
 
         if (track > player.queue.length) {
-            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\<:icon_cross:1200797307805892651>\ | Song was not found`);
+            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\✖️\ | Không tìm thấy bài hát`);
 
             return interaction.editReply({ embeds: [embed] });
         }
 
         await player.queue.remove(track - 1);
 
-        const embed = new EmbedBuilder().setColor(client.color).setDescription(`<:Check:1200809259928129547> | Song has been: \`Removed\``);
+        const embed = new EmbedBuilder().setColor(client.color).setDescription(`<a:check_mark:1213409895483965490> | Bài hát đã: \`Gỡ bở\``);
 
         return interaction.editReply({ embeds: [embed] });
     },
