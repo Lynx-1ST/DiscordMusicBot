@@ -21,18 +21,18 @@ module.exports.run = async (client, player, track) => {
 
     const Started = new EmbedBuilder()
         .setAuthor({
-            name: `Now Playing`,
+            name: `**ĐANG PHÁT**`,
             iconURL: "https://cdn.discordapp.com/emojis/1189604441213644851.gif",
         })
         .setThumbnail(track.info.image)
         .setDescription(`**[${trackTitle}](${track.info.uri})**`)
         .addFields([
-            { name: `Author:`, value: `${trackAuthor}`, inline: true },
-            { name: `Requested By:`, value: `${track.info.requester}`, inline: true },
-            { name: `Duration:`, value: `${trackDuration}`, inline: true },
+            { name: `Tác giả:`, value: `${trackAuthor}`, inline: true },
+            { name: `Yêu cầu bởi:`, value: `${track.info.requester}`, inline: true },
+            { name: `Thời lượng:`, value: `${trackDuration}`, inline: true },
         ])
         .setColor(client.color)
-        .setFooter({ text: `Loop Mode: ${capital(player.loop)} • Queue Left: ${player.queue.length} • Volume: ${player.volume}%` });
+        .setFooter({ text: `Chế độ Lặp lại: ${capital(player.loop)} • Hàng chờ còn lại: ${player.queue.length} • Âm lượng: ${player.volume}%` });
 
     const emoji = client.emoji.button;
 
@@ -68,7 +68,7 @@ module.exports.run = async (client, player, track) => {
             return true;
         else {
             message.reply({
-                content: `\`❌\` | You must be on the same voice channel as mine to use this button.`,
+                content: `\`❌\` | Bạn phải ở cùng kênh thoại với tôi để sử dụng nút này.`,
                 ephemeral: true,
             });
         }
@@ -121,7 +121,7 @@ module.exports.run = async (client, player, track) => {
             if (!player) {
                 collector.stop();
             } else if (!player.currentTrack.info.isSeekable) {
-                const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Song can't be replay`);
+                const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Bài hát không thể phát lại`);
 
                 return message.reply({ embeds: [embed], ephemeral: true });
             } else {
@@ -148,7 +148,7 @@ module.exports.run = async (client, player, track) => {
                 player.pause(false);
 
                 Started.setAuthor({
-                    name: `Now Playing`,
+                    name: `ĐANG PHÁT`,
                     iconURL: "https://cdn.discordapp.com/emojis/1189604441213644851.gif",
                 });
 
@@ -161,7 +161,7 @@ module.exports.run = async (client, player, track) => {
                 player.pause(true);
 
                 Started.setAuthor({
-                    name: `Song Paused`,
+                    name: `Bài hát TẠM DỪNG`,
                     iconURL: "https://cdn.discordapp.com/emojis/1189604441213644851.gif",
                 });
 
@@ -173,7 +173,7 @@ module.exports.run = async (client, player, track) => {
             if (!player) {
                 collector.stop();
             } else if (!player || player.queue.size == 0) {
-                const embed = new EmbedBuilder().setDescription(`\`❌\` | Queue is: \`Empty\``).setColor(client.color);
+                const embed = new EmbedBuilder().setDescription(`\`❌\` | Hàng đợi là: \`Trống\``).setColor(client.color);
 
                 return message.reply({ embeds: [embed], ephemeral: true });
             } else {
@@ -185,7 +185,7 @@ module.exports.run = async (client, player, track) => {
             if (!player) {
                 collector.stop();
             } else if (!player.previousTrack) {
-                const embed = new EmbedBuilder().setDescription(`\`❌\` | Previous song was: \`Not found\``).setColor(client.color);
+                const embed = new EmbedBuilder().setDescription(`\`❌\` | Bài hát trước đó: \`Không tìm thấy\``).setColor(client.color);
 
                 return message.reply({ embeds: [embed], ephemeral: true });
             } else {
@@ -198,7 +198,7 @@ module.exports.run = async (client, player, track) => {
             if (!player) {
                 collector.stop();
             } else if (!player.queue.length) {
-                const embed = new EmbedBuilder().setDescription(`\`❌\` | Queue is: \`Empty\``).setColor(client.color);
+                const embed = new EmbedBuilder().setDescription(`\`❌\` | Hàng đợi là: \`Trống\``).setColor(client.color);
 
                 return message.reply({ embeds: [embed], ephemeral: true });
             } else {
@@ -212,7 +212,7 @@ module.exports.run = async (client, player, track) => {
             } else if (player.volume < 20) {
                 await player.setVolume(10);
 
-                const embed = new EmbedBuilder().setDescription(`\`❌\` | Volume can't be lower than: \`10%\``).setColor(client.color);
+                const embed = new EmbedBuilder().setDescription(`\`❌\` | Âm lượng không thể thấp hơn: \`10%\``).setColor(client.color);
 
                 return message.reply({ embeds: [embed], ephemeral: true });
             } else {
@@ -232,7 +232,7 @@ module.exports.run = async (client, player, track) => {
             } else if (player.volume > 90) {
                 await player.setVolume(100);
 
-                const embed = new EmbedBuilder().setDescription(`\`❌\` | Volume can't be higher than: \`100%\``).setColor(client.color);
+                const embed = new EmbedBuilder().setDescription(`\`❌\` | Âm lượng không thể cao hơn: \`100%\``).setColor(client.color);
 
                 return message.reply({ embeds: [embed], ephemeral: true });
             } else {
@@ -241,7 +241,7 @@ module.exports.run = async (client, player, track) => {
                 await player.setVolume(player.volume + 10);
 
                 Started.setFooter({
-                    text: `Queue Left: ${player.queue.length} • Loop Mode: ${capital(player.loop)} • Volume: ${player.volume}%`,
+                    text: `Hàng đợi còn lại: ${player.queue.length} • Chế độ lặp lại: ${capital(player.loop)} • Âm lượng: ${player.volume}%`,
                 });
 
                 await nplaying.edit({ embeds: [Started], components: [button, button2] });
@@ -269,7 +269,7 @@ module.exports.run = async (client, player, track) => {
 
                 const embed = new EmbedBuilder()
                     .setAuthor({
-                        name: player.isPlaying ? `Now Playing` : `Song Paused`,
+                        name: player.isPlaying ? `ĐANG PHÁT` : `TẠM DỪNG`,
                         iconURL: "https://cdn.discordapp.com/emojis/1189604441213644851.gif",
                     })
                     .setThumbnail(player.currentTrack.info.image)
@@ -288,7 +288,7 @@ module.exports.run = async (client, player, track) => {
                         },
                     ])
                     .setColor(client.color)
-                    .setFooter({ text: `Made with 💖 & Pycord` })
+                    .setFooter({ text: `Tạo bởi: Lynx_1ST 🛡️` })
                     .setTimestamp();
 
                 return message.reply({ embeds: [embed], ephemeral: true });
