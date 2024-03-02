@@ -49,13 +49,13 @@ module.exports = {
                 Control.save()
                     .then(() => {
                         const embed = new EmbedBuilder()
-                            .setDescription(`<a:on2:1200808044951511091> | Control has been set to: \`Enable\``)
+                            .setDescription(`<a:check_mark:1213409895483965490> | Điều khiển đã được đặt thành: \`BẬT\``)
                             .setColor(client.color);
 
                         interaction.editReply({ embeds: [embed] });
                     })
                     .catch((err) => {
-                        interaction.editReply(`An error occured while setting the player control mode!`);
+                        interaction.editReply(`Đã xảy ra lỗi khi cài đặt chế độ điều khiển trình phát!`);
                         console.log(err);
                     });
             } else if (Control) {
@@ -64,13 +64,13 @@ module.exports = {
                 Control.save()
                     .then(() => {
                         const embed = new EmbedBuilder()
-                            .setDescription(`<a:on2:1200808044951511091> | Control has been changed to: \`Enable\``)
+                            .setDescription(`<a:check_mark:1213409895483965490> | Điều khiển đã được đặt thành: \`BẬT\``)
                             .setColor(client.color);
 
                         interaction.editReply({ embeds: [embed] });
                     })
                     .catch((err) => {
-                        interaction.editReply(`An error occured while setting the player control mode!`);
+                        interaction.editReply(`Đã xảy ra lỗi khi cài đặt chế độ điều khiển trình phát!`);
                         console.log(err);
                     });
             }
@@ -81,13 +81,13 @@ module.exports = {
                 Control.save()
                     .then(() => {
                         const embed = new EmbedBuilder()
-                            .setDescription(`<a:off_off:1200807969235935294> | Control has been set to: \`Disable\``)
+                            .setDescription(`<a:check_mark:1213409895483965490> | Điều khiển đã được đặt thành: \`TẮT\``)
                             .setColor(client.color);
 
                         interaction.editReply({ embeds: [embed] });
                     })
                     .catch((err) => {
-                        interaction.editReply(`An error occured while setting the player control mode!`);
+                        interaction.editReply(`Đã xảy ra lỗi khi cài đặt chế độ điều khiển trình phát!`);
                         console.log(err);
                     });
             } else if (Control) {
@@ -96,13 +96,13 @@ module.exports = {
                 Control.save()
                     .then(() => {
                         const embed = new EmbedBuilder()
-                            .setDescription(`<a:off_off:1200807969235935294> | Control has been changed to: \`Disable\``)
+                            .setDescription(`<a:check_mark:1213409895483965490> | Điều khiển đã được đặt thành: \`TẮT\``)
                             .setColor(client.color);
 
                         interaction.editReply({ embeds: [embed] });
                     })
                     .catch((err) => {
-                        interaction.editReply(`An error occured while setting the player control mode!`);
+                        interaction.editReply(`Đã xảy ra lỗi khi cài đặt chế độ điều khiển trình phát!`);
                         console.log(err);
                     });
             }
