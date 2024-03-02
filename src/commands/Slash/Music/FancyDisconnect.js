@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "disconnect",
-    description: "Force Disconnect the bot from your voice channel.",
+    description: "Buộc ngắt kết nối bot khỏi kênh thoại của bạn.",
     category: "Music",
     permissions: {
         bot: [],
