@@ -12,7 +12,7 @@ module.exports.run = async (client, message) => {
 
     if (message.content.match(mention)) {
         const embed = new EmbedBuilder().setColor(client.color).setDescription(`<:Wave:1200807208733122643> Greetings, ${message.author.toString()}!\n`
-        + `<a:disk:1200807327616479364> Feel free to use \`/help\` for more information. All commands are designed as slash commands for your convenience. If you need further assistance or have questions, don't hesitate to join our [Support Server](https://discord.gg/7MEHnM6T87).`);
+        + `<a:99_thongbao:1213006712618090517> Vui lòng sử dụng \`/help\` để biết thêm thông tin. Tất cả các lệnh được thiết kế dưới dạng lệnh gạch chéo để thuận tiện cho bạn. Nếu bạn cần hỗ trợ thêm hoặc có thắc mắc, vui lòng nhắn tin [Support 🛡️](https://discord.com/users/1081547609979756596)`);
 
         message.reply({ embeds: [embed] });
     }
@@ -60,13 +60,13 @@ module.exports.run = async (client, message) => {
 
     if (botMissingPermissions.length > 0)
         return message.reply({
-            content: `<:icon_cross:1200797307805892651>  | I don't have one of these permissions \`ViewChannel\`, \`SendMessages\`, \`EmbedLinks\`.\nPlease double check them in your server role & channel settings.`,
+            content: `✖️ | Tôi không có một trong các quyền này \`ViewChannel\`, \`SendMessages\`, \`EmbedLinks\`.\nVui lòng kiểm tra kỹ chúng trong cài đặt kênh và vai trò máy chủ của bạn.`,
             components: [row],
         });
 
     // CHECK OWNER
     if (command.owner && message.author.id !== client.owner) {
-        return message.reply({ content: `<:icon_cross:1200797307805892651>  | Only my owner can use this command!\n\nMade with 💖 & TEC` });
+        return message.reply({ content: `✖️  | Chỉ chủ sở hữu của tôi mới có thể sử dụng lệnh này!\n\nĐược tạo bởi Lynx_1ST 🛡️` });
     }
 
     // ERORR HANDLING
@@ -75,6 +75,6 @@ module.exports.run = async (client, message) => {
     } catch (error) {
         console.log(error);
 
-        return message.reply({ content: `<:icon_cross:1200797307805892651>  | Something went wrong.`, components: [row] });
+        return message.reply({ content: `✖️  | Đã xảy ra lỗi`, components: [row] });
     }
 };
