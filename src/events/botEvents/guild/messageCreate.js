@@ -11,7 +11,7 @@ module.exports.run = async (client, message) => {
     const mention = new RegExp(`^<@!?${client.user.id}>( |)$`);
 
     if (message.content.match(mention)) {
-        const embed = new EmbedBuilder().setColor(client.color).setDescription(`<:Wave:1200807208733122643> Greetings, ${message.author.toString()}!\n`
+        const embed = new EmbedBuilder().setColor(client.color).setDescription(`Xin chào ✈️, ${message.author.toString()}!\n`
         + `<a:99_thongbao:1213006712618090517> Vui lòng sử dụng \`/help\` để biết thêm thông tin. Tất cả các lệnh được thiết kế dưới dạng lệnh gạch chéo để thuận tiện cho bạn. Nếu bạn cần hỗ trợ thêm hoặc có thắc mắc, vui lòng nhắn tin [Support 🛡️](https://discord.com/users/1081547609979756596)`);
 
         message.reply({ embeds: [embed] });
@@ -19,7 +19,7 @@ module.exports.run = async (client, message) => {
 
     // REMOVE PREFIX FOR OWNER
     if (client.owner.includes(message.member.id) && !client.owner.includes(client.user.id) && !message.content.startsWith(prefix)) {
-        prefix = "!";
+        prefix = "+";
     }
 
     const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
