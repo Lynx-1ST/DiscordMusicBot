@@ -47,16 +47,16 @@ module.exports = {
         let page = 0;
 
         const embed = new EmbedBuilder()
-            .setAuthor({ name: `Queue List`, iconURL: interaction.guild.iconURL({ dynamic: true }) })
+            .setAuthor({ name: `Danh sách đợi`, iconURL: interaction.guild.iconURL({ dynamic: true }) })
             .setColor(client.color)
             .setThumbnail(npSong.image)
             .setDescription(
-                `**__Now Playing__**\n**[${npTitle}](${npSong.uri})** • \`${npDuration}\` • ${npSong.requester}\n\n**__Up Next__**\n${
-                    pages[page] ? pages[page] : "Queue is empty"
+                `**__ĐANG PHÁT__**\n**[${npTitle}](${npSong.uri})** • \`${npDuration}\` • ${npSong.requester}\n\n**__TIẾP THEO__**\n${
+                    pages[page] ? pages[page] : "Hàng đợi trống"
                 }`
             )
             .setFooter({
-                text: `Total Queued • ${player.queue.length} tracks`,
+                text: `Tổng hàng đợi • ${player.queue.length} bài hát`,
                 iconURL: interaction.user.displayAvatarURL({ dynamic: true }),
             })
             .setTimestamp();
@@ -80,7 +80,7 @@ module.exports = {
                         page = page - 1 < 0 ? pages.length - 1 : --page;
 
                         embed.setDescription(
-                            `**__Now Playing__**\n**[${npTitle}](${npSong.uri})** • \`${npDuration}\` • ${npSong.requester}\n\n**__Up Next__**\n${pages[page]}`
+                            `**__ĐANG PHÁT__**\n**[${npTitle}](${npSong.uri})** • \`${npDuration}\` • ${npSong.requester}\n\n**__TIẾP THEO__**\n${pages[page]}`
                         );
 
                         return msg.edit({ embeds: [embed], components: [row] });
@@ -96,7 +96,7 @@ module.exports = {
                         page = page + 1 >= pages.length ? 0 : ++page;
 
                         embed.setDescription(
-                            `**__Now Playing__**\n**[${npTitle}](${npSong.uri})** • \`${npDuration}\` • ${npSong.requester}\n\n**__Up Next__**\n${pages[page]}`
+                            `**__ĐANG PHÁT__**\n**[${npTitle}](${npSong.uri})** • \`${npDuration}\` • ${npSong.requester}\n\n**__TIẾP THEO__**\n${pages[page]}`
                         );
 
                         return msg.edit({ embeds: [embed], components: [row] });
