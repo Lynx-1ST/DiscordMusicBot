@@ -56,7 +56,7 @@ module.exports.run = async (client, oldState, newState) => {
 
                 const TimeoutEmbed = new EmbedBuilder()
                     .setDescription(
-                        `\`<a:bye_bye:1200807710858416138>\` | Disconnected...!!! Because I was left alone in <#${vcRoom}>. This can be disable by using \`247\` command.\n\n TEC 💖`,
+                        `\`<a:sadcatrunning:1213409603828584523>\` | Đã ngắt kết nối...!!! Bởi vì tôi bị bỏ lại một mình trong <#${vcRoom}>. Bạn có thể tắt tính năng này bằng cách sử dụng lệnh \`247\`.`,
                     )
                     .setColor(client.color);
 
