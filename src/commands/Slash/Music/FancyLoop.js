@@ -3,12 +3,12 @@ const GControl = require("../../../settings/models/Control.js");
 
 module.exports = {
     name: "loop",
-    description: "Set loop mode to current song.",
+    description: "Mời bot vào kênh thoại của bạn.",
     category: "Music",
     options: [
         {
             name: "mode",
-            description: "Choose loop mode for current player.",
+            description: "Chọn chế độ vòng lặp cho trình phát hiện tại.",
             type: ApplicationCommandOptionType.String,
             required: true,
             choices: [
