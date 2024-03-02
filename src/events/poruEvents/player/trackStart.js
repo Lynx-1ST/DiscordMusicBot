@@ -24,7 +24,7 @@ module.exports.run = async (client, player, track) => {
             iconURL: "https://cdn.discordapp.com/emojis/1189604441213644851.gif",
         })
         .setThumbnail(client.user.displayAvatarURL())
-        .setDescription(`**[${trackTitle}](${track.info.uri})**\n\n![Image](${track.info.image})`)
+        .setDescription(`**[${trackTitle}](${track.info.uri})**\n\n${track.info.image}\n\n`)
         .addFields([
             { name: `Tác giả:`, value: `${trackAuthor}`, inline: true },
             { name: `Yêu cầu bởi:`, value: `${track.info.requester}`, inline: true },
