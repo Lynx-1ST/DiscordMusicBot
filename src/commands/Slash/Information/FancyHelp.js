@@ -117,7 +117,7 @@ module.exports = {
                         )
                         .setColor(client.color)
                         .setFooter({
-                            text: `DMs để trở thành Premium <a:99_yellowcrown:1213402242015699074>`,
+                            text: `DMs để trở thành Premium`,
                             iconURL: client.user.displayAvatarURL({ dynamic: true }),
                         })
                         .setTimestamp();
