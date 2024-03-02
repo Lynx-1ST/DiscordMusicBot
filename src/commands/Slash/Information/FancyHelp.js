@@ -30,22 +30,22 @@ module.exports = {
         await interaction.deferReply({ ephemeral: false });
 
         const row2 = new ActionRowBuilder()
-            .addComponents(new ButtonBuilder().setLabel("Sponsor").setURL('https://discord.gg/7MEHnM6T87').setStyle(ButtonStyle.Link))
-            .addComponents(new ButtonBuilder().setLabel("Support Server").setURL(supportUrl).setStyle(ButtonStyle.Link));
+            .addComponents(new ButtonBuilder().setLabel("🤖").setURL('https://github.com/Lynx-1ST').setStyle(ButtonStyle.Link))
+            .addComponents(new ButtonBuilder().setLabel("Support 🛡️").setURL(supportUrl).setStyle(ButtonStyle.Link));
 
         const categories = readdirSync("./src/commands/Slash/");
 
         const embed = new EmbedBuilder()
             .setAuthor({
-                name: `${interaction.guild.members.me.displayName} Help Panel! 💖`,
+                name: `${interaction.guild.members.me.displayName} Bảng Trợ Giúp! 💖`,
                 iconURL: interaction.guild.iconURL({ dynamic: true }),
             })
             .setColor(client.color)
             .setDescription(
-                `👋🏻 **${interaction.member}**, Myself **${client.user}** \n\n<:F_arrow:1200816267343446106> **${client.user.username}**\n**An Advanced Discord MusicBot with User-Friendly Interface. I Promise you that I will try my Best to Give you the beat of Music Clearly.** \n\n<:stats:1200816936779518093> **__Category Fancy__**\n<:info:1200796269887635466>  **Information**\n<:music:1200817443623411803>  **Music**\n<:Premium:1200817621503840276> **Premium**\n<:developer:1200817682971373783>  **Developer**\n<:filters:1200817771118862547>  **Filters**\n\n<:ping:1200817860432371852> **__Status__:  ${client.user.username}**\n<:servers:1200817913859416155>  Servers: **${client.guilds.cache.size}**\n<:ping:1200817860432371852>  Ping: **${Math.round(client.ws.ping)}ms**\n`
+                `👋🏻 Xin chào <a:Anime_nekocutenothirstspraywater:1212719299949502514> **${interaction.member}**, Tôi là **${client.user}** \n\n<:bot:1213400513597677690> **${client.user.username}**\n** Một MusicBot Discord nâng cao với giao diện thân thiện với người dùng. Tôi hứa với bạn rằng tôi sẽ cố gắng hết sức để mang đến cho bạn những nhịp điệu hay một cách rõ ràng.** \n\n<a:hg_guradanhdan:1213401050925764659> **__DANH MỤC__** <a:hg_guradanhdan:1213401050925764659>\n<:zlogServer:1213005861555933275>  **Thông tin**\n<a:music:1213007629379575880>  **Âm Nhạc**\n<a:99_yellowcrown:1213402242015699074> **Premium**\n<:zcmtyOwner:1212982871011360768>  **Phát triển**\n<:zcmtyAdmin:1212983944732082246>  **Bộ Lọc**\n\n<:update:1213006164284022795> **__TRẠNG THÁI__:  ${client.user.username}** <:update:1213006164284022795>\n<:zinfoHome:1213008332906958888> Máy chủ: **${client.guilds.cache.size}**\n<a:green:1213401879095152682>  Độ trễ: **${Math.round(client.ws.ping)}ms**\n`
             )
             .setFooter({
-                text: `Made with 💖 And TEC`,
+                text: `Tạo bởi Lynx_1ST <:developer:1212982747950350346>`,
                 iconURL: client.user.displayAvatarURL({ dynamic: true }),
             })
             .setTimestamp();
@@ -93,7 +93,7 @@ module.exports = {
                             )
                             .setColor(client.color)
                             .setFooter({
-                                text: `Made with 💖 & TEC | Total Commands: ${
+                                text: `Tạo bởi Lynx_1ST <:developer:1212982747950350346> | Tổng số lệnh: ${
                                     client.slashCommands.filter((c) => c.category === directory).size
                                 }`,
                                 iconURL: client.user.displayAvatarURL({ dynamic: true }),
@@ -109,15 +109,15 @@ module.exports = {
                 if (reason === "time") {
                     const timed = new EmbedBuilder()
                         .setAuthor({
-                            name: `${interaction.guild.members.me.displayName} Help Panel! 💖`,
+                            name: `${interaction.guild.members.me.displayName} Bảng Trợ Giúp! 💖`,
                             iconURL: interaction.guild.iconURL({ dynamic: true }),
                         })
                         .setDescription(
-                            `Please use /help again for Checking Commands`
+                            `Vui lòng sử dụng lại /help để kiểm tra lệnh <a:green:1213401879095152682>`
                         )
                         .setColor(client.color)
                         .setFooter({
-                            text: `Join Support For Premium`,
+                            text: `DMs để trở thành Premium <a:99_yellowcrown:1213402242015699074>`,
                             iconURL: client.user.displayAvatarURL({ dynamic: true }),
                         })
                         .setTimestamp();
