@@ -23,7 +23,7 @@ module.exports = {
         let player = client.poru.players.get(interaction.guild.id);
 
         if (player) {
-            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\ <:icon_cross:1200797307805892651>\ | I already joined a voice channel.`);
+            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\✖️\ | Tôi đã ở trong một kênh thoại khác.`);
 
             return interaction.editReply({ embeds: [embed] });
         }
@@ -41,7 +41,7 @@ module.exports = {
 
             const embed = new EmbedBuilder()
                 .setColor(client.color)
-                .setDescription(`<:Check:1200809259928129547> | Joined to ${interaction.member.voice.channel.toString()}`);
+                .setDescription(`<a:check_mark:1213409895483965490> | Đã tham gia ${interaction.member.voice.channel.toString()}`);
 
             return interaction.editReply({ embeds: [embed] });
         }
