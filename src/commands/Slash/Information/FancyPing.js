@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "ping",
-    description: "Send a ping request.",
+    description: "**Đang lấy độ trễ máy chủ....**",
     category: "Information",
     permissions: {
         bot: [],
@@ -20,7 +20,7 @@ module.exports = {
     run: async (client, interaction) => {
         await interaction.deferReply({ ephemeral: false });
 
-        const embed = new EmbedBuilder().setDescription(`<a:disk:1200807327616479364>  ${client.user.username} Network Ping!\n<a:Fancy_Dot:1200815258357477378> **API Latency:** __${Math.round(client.ws.ping)}ms__\n<a:Fancy_Dot:1200815258357477378> **Websocket Latency:** __${Math.round(client.ws.ping)}__`).setColor(client.color);
+        const embed = new EmbedBuilder().setDescription(`<a:green:1213401879095152682>  ${client.user.username} Độ trễ mạng!\n<a:green:1213401879095152682> **Độ trễ API:** __${Math.round(client.ws.ping)}ms__\n<a:green:1213401879095152682> **Độ trễ Websocket:** __${Math.round(client.ws.ping)}__`).setColor(client.color);
 
         return interaction.editReply({ embeds: [embed] });
     },
