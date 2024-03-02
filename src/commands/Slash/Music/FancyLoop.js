@@ -13,11 +13,11 @@ module.exports = {
             required: true,
             choices: [
                 {
-                    name: "current",
+                    name: "Bài hát hiện tại",
                     value: "current",
                 },
                 {
-                    name: "queue",
+                    name: "Hàng đợi",
                     value: "queue",
                 },
             ],
@@ -45,7 +45,7 @@ module.exports = {
         if (Control.playerControl === "enable") {
             const ctrl = new EmbedBuilder()
                 .setColor(client.color)
-                .setDescription(`\ <:icon_cross:1200797307805892651>\ | You can't use this command as the player control was enable!`);
+                .setDescription(`\✖️\ | Bạn không thể sử dụng lệnh này vì điều khiển trình phát đã được bật!`);
             return interaction.editReply({ embeds: [ctrl] });
         }
 
@@ -56,13 +56,13 @@ module.exports = {
             if (player.loop === "TRACK") {
                 await player.setLoop("NONE");
 
-                const embed = new EmbedBuilder().setColor(client.color).setDescription(`\ <a:reset:1200812235753259090>\ | Loop mode has been: \`Disabled\``);
+                const embed = new EmbedBuilder().setColor(client.color).setDescription(`\<a:check_mark:1213409895483965490>\ | Chế độ vòng lặp là: \`TẮT\``);
 
                 return interaction.editReply({ embeds: [embed] });
             } else {
                 await player.setLoop("TRACK");
 
-                const embed = new EmbedBuilder().setColor(client.color).setDescription(`\ <a:reset:1200812235753259090>\ | Loop mode has been set to: \`Current\``);
+                const embed = new EmbedBuilder().setColor(client.color).setDescription(`\<a:check_mark:1213409895483965490>\ | Chế độ vòng lặp là: \`Bài hát hiện tại\``);
 
                 return interaction.editReply({ embeds: [embed] });
             }
@@ -70,13 +70,13 @@ module.exports = {
             if (player.loop === "QUEUE") {
                 await player.setLoop("NONE");
 
-                const embed = new EmbedBuilder().setColor(client.color).setDescription(`\ <a:reset:1200812235753259090>\ | Loop mode has been: \`Disabled\``);
+                const embed = new EmbedBuilder().setColor(client.color).setDescription(`\<a:check_mark:1213409895483965490>\ | Chế độ vòng lặp là: \`TẮT\``);
 
                 return interaction.editReply({ embeds: [embed] });
             } else {
                 player.setLoop("QUEUE");
 
-                const embed = new EmbedBuilder().setColor(client.color).setDescription(`\ <a:reset:1200812235753259090>\ | Loop mode has been set to: \`Queue\``);
+                const embed = new EmbedBuilder().setColor(client.color).setDescription(`\<a:check_mark:1213409895483965490>\ | Chế độ vòng lặp là: \`Hàng đợi\``);
 
                 return interaction.editReply({ embeds: [embed] });
             }
