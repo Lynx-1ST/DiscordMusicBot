@@ -2,12 +2,12 @@ const { ApplicationCommandOptionType, EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "remove",
-    description: "Remove a song from the queue.",
+    description: "Xóa bài hát khỏi hàng đợi.",
     category: "Music",
     options: [
         {
             name: "position",
-            description: "Position of the song.",
+            description: "Vị trí của bài hát.",
             type: ApplicationCommandOptionType.Number,
             required: true,
             min_value: 1,
