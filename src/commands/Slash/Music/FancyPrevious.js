@@ -3,7 +3,7 @@ const GControl = require("../../../settings/models/Control.js");
 
 module.exports = {
     name: "previous",
-    description: "Return to the previous song.",
+    description: "Quay lại bài hát trước.",
     category: "Music",
     permissions: {
         bot: [],
