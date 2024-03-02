@@ -42,10 +42,10 @@ module.exports = {
             })
             .setColor(client.color)
             .setDescription(
-                `👋🏻 Xin chào <a:Anime_nekocutenothirstspraywater:1212719299949502514> **${interaction.member}**, Tôi là **${client.user}** \n\n<:bot:1213400513597677690> **${client.user.username}**\n** Một MusicBot Discord nâng cao với giao diện thân thiện với người dùng. Tôi hứa với bạn rằng tôi sẽ cố gắng hết sức để mang đến cho bạn những nhịp điệu hay một cách rõ ràng.** \n\n<a:hg_guradanhdan:1213401050925764659> **__DANH MỤC__** <a:hg_guradanhdan:1213401050925764659>\n<:zlogServer:1213005861555933275>  **Thông tin**\n<a:music:1213007629379575880>  **Âm Nhạc**\n<a:99_yellowcrown:1213402242015699074> **Premium**\n<:zcmtyOwner:1212982871011360768>  **Phát triển**\n<:zcmtyAdmin:1212983944732082246>  **Bộ Lọc**\n\n<:update:1213006164284022795> **__TRẠNG THÁI__:  ${client.user.username}** <:update:1213006164284022795>\n<:zinfoHome:1213008332906958888> Máy chủ: **${client.guilds.cache.size}**\n<a:green:1213401879095152682>  Độ trễ: **${Math.round(client.ws.ping)}ms**\n`
+                `👋🏻 Xin chào **${interaction.member}** <a:Anime_nekocutenothirstspraywater:1212719299949502514>, Tôi là **${client.user}** \n\n<:bot:1213400513597677690> **${client.user.username}**\n** Một MusicBot Discord nâng cao với giao diện thân thiện với người dùng. Tôi hứa với bạn rằng tôi sẽ cố gắng hết sức để mang đến cho bạn những nhịp điệu hay một cách rõ ràng.** \n\n----------------<a:hg_guradanhdan:1213401050925764659> **__DANH MỤC__** <a:hg_guradanhdan:1213401050925764659>----------------\n<:zlogServer:1213005861555933275>  **Thông tin**\n<a:music:1213007629379575880> ● **Âm Nhạc**\n<a:99_yellowcrown:1213402242015699074> ● **Premium**\n<:zcmtyOwner:1212982871011360768> ● **Phát triển**\n<:zcmtyAdmin:1212983944732082246> ● **Bộ Lọc**\n\n-------------<:update:1213006164284022795> **__TRẠNG THÁI__:  ${client.user.username}** <:update:1213006164284022795>-------------\n<:zinfoHome:1213008332906958888> ● Máy chủ: **${client.guilds.cache.size}**\n<a:green:1213401879095152682> ● Độ trễ: **${Math.round(client.ws.ping)}ms**\n`
             )
             .setFooter({
-                text: `Tạo bởi Lynx_1ST <:developer:1212982747950350346>`,
+                text: `Tạo bởi Lynx_1ST 🛡️`,
                 iconURL: client.user.displayAvatarURL({ dynamic: true }),
             })
             .setTimestamp();
@@ -93,7 +93,7 @@ module.exports = {
                             )
                             .setColor(client.color)
                             .setFooter({
-                                text: `Tạo bởi Lynx_1ST <:developer:1212982747950350346> | Tổng số lệnh: ${
+                                text: `Tạo bởi Lynx_1ST 🛡️ | Tổng số lệnh: ${
                                     client.slashCommands.filter((c) => c.category === directory).size
                                 }`,
                                 iconURL: client.user.displayAvatarURL({ dynamic: true }),
