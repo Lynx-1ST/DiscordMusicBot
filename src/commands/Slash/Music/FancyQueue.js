@@ -4,7 +4,7 @@ const formatDuration = require("../../../structures/FormatDuration.js");
 
 module.exports = {
     name: "queue",
-    description: "Show current player queue.",
+    description: "Hiển thị hàng đợi người chơi hiện tại.",
     category: "Music",
     permissions: {
         bot: [],
