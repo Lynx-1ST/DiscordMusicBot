@@ -27,20 +27,20 @@ module.exports = {
         if (Control.playerControl === "enable") {
             const ctrl = new EmbedBuilder()
                 .setColor(client.color)
-                .setDescription(`<:icon_cross:1200797307805892651> | You can't use this command as the player control was enable!`);
+                .setDescription(`\✖️\ | Bạn không thể sử dụng lệnh này vì điều khiển trình phát đã được bật!`);
             return interaction.editReply({ embeds: [ctrl] });
         }
 
         const player = client.poru.players.get(interaction.guild.id);
 
         if (!player.queue.length) {
-            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\<:icon_cross:1200797307805892651>\ | Queue was: \`Empty\``);
+            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\✖️\ | Hàng đợi: \`Trống\``);
 
             return interaction.editReply({ embeds: [embed] });
         } else {
             await player.queue.shuffle();
 
-            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`🔀\` | Queue has been: \`Shuffled\``);
+            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`🔀\` | Hàng đợi đã bị: \`Đã xáo trộn\``);
 
             return interaction.editReply({ embeds: [embed] });
         }
