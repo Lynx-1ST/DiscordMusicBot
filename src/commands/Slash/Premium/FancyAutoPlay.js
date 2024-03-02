@@ -27,7 +27,7 @@ module.exports = {
         const ytUri = /^(https?:\/\/)?(www\.)?(m\.)?(music\.)?(youtube\.com|youtu\.?be)\/.+$/gi.test(currentsong.uri);
 
         if (!ytUri) {
-            const embed = new EmbedBuilder().setDescription(`\ <:icon_cross:1200797307805892651>\ | Autoplay feature only support YouTube!`).setColor(client.color);
+            const embed = new EmbedBuilder().setDescription(`\✖️\ | Tính năng tự động phát chỉ hỗ trợ YouTube!`).setColor(client.color);
 
             return interaction.editReply({ embeds: [embed] });
         }
@@ -37,7 +37,7 @@ module.exports = {
 
             await player.queue.clear();
 
-            const embed = new EmbedBuilder().setDescription(`\`🔴\` | Autoplay has been: \`Disabled\``).setColor(client.color);
+            const embed = new EmbedBuilder().setDescription(`\`🔴\` | Tự động phát đã: \`TẮT\``).setColor(client.color);
 
             return interaction.editReply({ embeds: [embed] });
         } else {
@@ -54,7 +54,7 @@ module.exports = {
 
                 await player.queue.add(res.tracks[Math.floor(Math.random() * res.tracks.length) ?? 1]);
 
-                const embed = new EmbedBuilder().setDescription(`\`🔵\` | Autoplay has been: \`Enabled\``).setColor(client.color);
+                const embed = new EmbedBuilder().setDescription(`\`🔵\` | Tự động phát đã: \`BẬT\``).setColor(client.color);
 
                 return interaction.editReply({ embeds: [embed] });
             }
