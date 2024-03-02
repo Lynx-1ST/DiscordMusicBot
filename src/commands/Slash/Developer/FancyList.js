@@ -25,15 +25,15 @@ module.exports = {
         let usersData = users.filter((user) => user.isPremium === true);
         let premium = usersData.map(
             (x, index) =>
-                `\`\`\`${index + 1}. ${x.Id} | Plan: ${x.premium.plan} | Expire At: ${moment(x.premium.expiresAt).format(
+                `\`\`\`${index + 1}. ${x.Id} | Plan: ${x.premium.plan} | Hết hạn: ${moment(x.premium.expiresAt).format(
                     "dddd, MMMM Do YYYY",
                 )}\`\`\``,
         );
 
         const embed = new EmbedBuilder()
-            .setAuthor({ name: `${client.user.username} Premium Users List`, iconURL: client.user.avatarURL({ dynamic: true }) })
+            .setAuthor({ name: `${client.user.username} Danh sách người dùng cao cấp`, iconURL: client.user.avatarURL({ dynamic: true }) })
             .setColor(client.color)
-            .setDescription(premium.join("\n") || "```No Premium User Found```");
+            .setDescription(premium.join("\n") || "```Không tìm thấy người dùng cao cấp```");
 
         return message.reply({ embeds: [embed] });
     },
