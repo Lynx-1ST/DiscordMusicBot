@@ -33,7 +33,7 @@ module.exports = {
       await interaction.deferReply({ ephemeral: false });
 
         const embed = new EmbedBuilder()
-            .setTitle(`<a:disk:1200807327616479364> Uptime Information!`)
+            .setTitle(`Thời gian Trực tuyến!`)
             .setDescription(`\`\`\`yml\n❓ Trạng thái : Online\n⏲ Uptime : ${pretty(client.uptime)}\n✈️ Uptime hệ thống : ${dDisplay + hDisplay + mDisplay + sDisplay}\n\`\`\``)
             .setColor(client.color);
 
