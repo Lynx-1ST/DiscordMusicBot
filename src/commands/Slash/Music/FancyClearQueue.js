@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "clearqueue",
-    description: "Clear the current player queue.",
+    description: "Xóa hàng đợi trình phát hiện tại.",
     category: "Music",
     permissions: {
         bot: [],
