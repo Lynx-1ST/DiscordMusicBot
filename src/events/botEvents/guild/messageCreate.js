@@ -66,7 +66,7 @@ module.exports.run = async (client, message) => {
 
     // CHECK OWNER
     if (command.owner && message.author.id !== client.owner) {
-        return message.reply({ content: `✖️  | Chỉ chủ sở hữu của tôi mới có thể sử dụng lệnh này!\n\nĐược tạo bởi Lynx_1ST 🛡️` });
+        return message.reply({ content: `✖️ | Chỉ chủ sở hữu của tôi mới có thể sử dụng lệnh này!\n\nĐược tạo bởi Lynx_1ST 🛡️` });
     }
 
     // ERORR HANDLING
@@ -75,6 +75,6 @@ module.exports.run = async (client, message) => {
     } catch (error) {
         console.log(error);
 
-        return message.reply({ content: `✖️  | Đã xảy ra lỗi`, components: [row] });
+        return message.reply({ content: `✖️ | Đã xảy ra lỗi`, components: [row] });
     }
 };

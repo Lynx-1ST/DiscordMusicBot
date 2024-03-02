@@ -63,7 +63,7 @@ module.exports.run = async (client, interaction) => {
 
         // CHECK BOT COMMANDS PERMISSIONS
         if (!interaction.guild.members.cache.get(client.user.id).permissions.has(command.permissions.bot || [])) {
-            warning.setDescription(`🔶  | Tôi không có quyền \`${command.permissions.bot.join(", ")}\` để thực thi lệnh này.`);
+            warning.setDescription(`🔶 | Tôi không có quyền \`${command.permissions.bot.join(", ")}\` để thực thi lệnh này.`);
 
             return interaction.reply({ embeds: [warning], components: [row], ephemeral: true });
         }
@@ -81,14 +81,14 @@ module.exports.run = async (client, interaction) => {
         let player = client.poru.players.get(interaction.guild.id);
         //Player check
         if (command.settings.player && !player) {
-            warning.setDescription(`✖️  | Không có trình phát nào khả dụng cho máy chủ này.`);
+            warning.setDescription(`✖️ | Không có trình phát nào khả dụng cho máy chủ này.`);
 
             return interaction.reply({ embeds: [warning], ephemeral: true });
         }
 
         // CURRENT PLAYING CHECK
         if (command.settings.current && !player.currentTrack) {
-            warning.setDescription(`✖️  | Không có bất kỳ bài hát hiện tại nào.`);
+            warning.setDescription(`✖️ | Không có bất kỳ bài hát hiện tại nào.`);
 
             return interaction.reply({ embeds: [warning], ephemeral: true });
         }
@@ -98,7 +98,7 @@ module.exports.run = async (client, interaction) => {
         //In Voice Channel Check
         if (command.settings.inVc) {
             if (!channel) {
-                warning.setDescription(`✖️  | Bạn phải ở trong kênh thoại để sử dụng lệnh này.`);
+                warning.setDescription(`✖️ | Bạn phải ở trong kênh thoại để sử dụng lệnh này.`);
 
                 return interaction.reply({ embeds: [warning], ephemeral: true });
             }
@@ -111,7 +111,7 @@ module.exports.run = async (client, interaction) => {
                     .has(command.permissions.channel || [])
             ) {
                 warning.setDescription(
-                    `✖️  | Tôi không có quyền \`${command.permissions.channel.join(
+                    `✖️ | Tôi không có quyền \`${command.permissions.channel.join(
                         ", ",
                     )}\` để thực hiện lệnh này trong kênh.`,
                 );
@@ -123,7 +123,7 @@ module.exports.run = async (client, interaction) => {
         // SAME VOICE CHANNEL CHECK
         if (command.settings.sameVc) {
             if (!channel || interaction.member.voice.channelId !== interaction.guild.members.me.voice.channelId) {
-                warning.setDescription(`✖️  | Bạn phải ở cùng kênh thoại với tôi để sử dụng lệnh này.`);
+                warning.setDescription(`✖️ | Bạn phải ở cùng kênh thoại với tôi để sử dụng lệnh này.`);
 
                 return interaction.reply({ embeds: [warning], ephemeral: true });
             }
@@ -136,7 +136,7 @@ module.exports.run = async (client, interaction) => {
                     .has(command.permissions.channel || [])
             ) {
                 warning.setDescription(
-                    `✖️  | Tôi không có quyền \`${command.permissions.channel.join(
+                    `✖️ | Tôi không có quyền \`${command.permissions.channel.join(
                         ", ",
                     )}\` để thực hiện lệnh này trong kênh.`,
                 );
@@ -148,7 +148,7 @@ module.exports.run = async (client, interaction) => {
         // PREMIUM USER CHECK
         if (command.settings.premium) {
             if (user && !user.isPremium) {
-                warning.setDescription(`😢  | Bạn không phải là người dùng cao cấp!`);
+                warning.setDescription(`😢 | Bạn không phải là người dùng cao cấp!`);
 
                 return interaction.reply({ embeds: [warning], components: [row], ephemeral: true });
             }
@@ -156,7 +156,7 @@ module.exports.run = async (client, interaction) => {
 
         // CHECK OWNER
         if (command.settings.owner && interaction.user.id !== client.owner) {
-            warning.setDescription(`😢  | Chỉ chủ sở hữu của tôi mới có thể sử dụng lệnh này!\n\nPremium`);
+            warning.setDescription(`😢 | Chỉ chủ sở hữu của tôi mới có thể sử dụng lệnh này!\n\nPremium`);
 
             return interaction.reply({ embeds: [warning], ephemeral: true });
         }
@@ -167,7 +167,7 @@ module.exports.run = async (client, interaction) => {
         } catch (error) {
             console.log(error);
 
-            warning.setDescription(`✖️  | Đã xảy ra lỗi.`);
+            warning.setDescription(`✖️ | Đã xảy ra lỗi.`);
 
             return interaction.editReply({ embeds: [warning], components: [row], ephmeral: true });
         }
