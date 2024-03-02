@@ -23,7 +23,7 @@ module.exports = {
         const player = client.poru.players.get(interaction.guild.id);
 
         if (!player.queue.length) {
-            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\ <:icon_cross:1200797307805892651>\ | Queue is: \`Empty\``);
+            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\<:pnv_chamxanhbien:1213408989086359654>\ | Hàng đợi: \`Trống\``);
 
             return interaction.editReply({ embeds: [embed] });
         } else {
@@ -31,7 +31,7 @@ module.exports = {
 
             await player.queue.clear();
 
-            const embed = new EmbedBuilder().setColor(client.color).setDescription(`<:Check:1200809259928129547> | \`${length}\` Queue has been: \`Cleared\``);
+            const embed = new EmbedBuilder().setColor(client.color).setDescription(`<a:loading:1213403030616018944> | \`${length}\` Hàng đợi: \`Đã xóa\``);
 
             return interaction.editReply({ embeds: [embed] });
         }
