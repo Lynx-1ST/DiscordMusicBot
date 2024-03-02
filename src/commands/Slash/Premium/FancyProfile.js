@@ -31,32 +31,32 @@ module.exports = {
                 iconURL: client.user.displayAvatarURL({ dynamic: true }),
             })
             .setColor(client.color)
-            .setDescription(`<:zyrex_Premium:1200808463035551825> Here are the details about your premium status.`)
+            .setDescription(`<a:99_yellowcrown:1213402242015699074> Dưới đây là thông tin chi tiết về trạng thái cao cấp của bạn.`)
             .setThumbnail(interaction.user.displayAvatarURL())
-            .setFooter({ text: "Always Listen To Premium Music" })
+            .setFooter({ text: "Premium" })
             .setTimestamp();
 
         if (user.premium.plan === "lifetime") {
             embed.addFields([
-                { name: `<:plan_Zyrex:1200808535601188964> | Plan:`, value: `\`\`\`${toOppositeCase(user.premium.plan)}\`\`\``, inline: true },
+                { name: `<a:99_yellowcrown:1213402242015699074> | Plan:`, value: `\`\`\`${toOppositeCase(user.premium.plan)}\`\`\``, inline: true },
                 { name:
-`<:zyrex_Premium:1200808463035551825> | Features:`, value: `\`\`\`Premium\`\`\``, inline: true },
-                { name: `<:active_Zyrex:1200808630769954916> | Expired:`, value: `\`\`\`Never\`\`\``, inline: false },    
+`<a:99_yellowcrown:1213402242015699074> | Tính năng:`, value: `\`\`\`Premium\`\`\``, inline: true },
+                { name: `<a:99_yellowcrown:1213402242015699074> | Hết hạn:`, value: `\`\`\`Không bao giờ\`\`\``, inline: false },    
             ]);
         } else {
             embed.addFields([
-                { name: `<:plan_Zyrex:1200808535601188964> | Plan:`, value: `\`\`\`${toOppositeCase(user.premium.plan || "Free")}\`\`\``, inline: true },
+                { name: `<a:99_yellowcrown:1213402242015699074> | Plan:`, value: `\`\`\`${toOppositeCase(user.premium.plan || "Free")}\`\`\``, inline: true },
             ]);
 
             if (user.premium.expiresAt < Date.now()) {
                 embed.addFields([
-                    { name: `<:zyrex_Premium:1200808463035551825> | Features:`, value: `\`\`\`Locked\`\`\``, inline: true },
-                    { name: `<:active_Zyrex:1200808630769954916> | Expired:`, value: `\`\`\`Never\`\`\``, inline: false },
+                    { name: `<a:99_yellowcrown:1213402242015699074> | Tính năng:`, value: `\`\`\`KHOÁ\`\`\``, inline: true },
+                    { name: `<a:99_yellowcrown:1213402242015699074> | Hết hạn:`, value: `\`\`\`Không bao giờ\`\`\``, inline: false },
                 ]);
             } else {
                 embed.addFields([
-                    { name: `<:zyrex_Premium:1200808463035551825> | Features:`, value: `\`\`\`Premium\`\`\``, inline: true },
-                    { name: `<:active_Zyrex:1200808630769954916> | Expired:`, value: `\`\`\`${timeLeft}\`\`\``, inline: false },
+                    { name: `<a:99_yellowcrown:1213402242015699074> | Tính năng:`, value: `\`\`\`Premium\`\`\``, inline: true },
+                    { name: `<a:99_yellowcrown:1213402242015699074> | Hết hạn:`, value: `\`\`\`${timeLeft}\`\`\``, inline: false },
                 ]);
             }
         }
