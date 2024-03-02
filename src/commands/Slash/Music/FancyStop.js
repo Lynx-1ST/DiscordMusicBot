@@ -27,7 +27,7 @@ module.exports = {
         if (Control.playerControl === "disable") {
             const ctrl = new EmbedBuilder()
                 .setColor(client.color)
-                .setDescription(`<:icon_cross:1200797307805892651> | You can't use this command as the player control was enable!`);
+                .setDescription(`\✖️\ | Bạn không thể sử dụng lệnh này vì điều khiển trình phát đã được bật!`);
             return interaction.editReply({ embeds: [ctrl] });
         }
 
@@ -37,7 +37,7 @@ module.exports = {
 
         await player.destroy();
 
-        const embed = new EmbedBuilder().setColor(client.color).setDescription(`\<a:bye_bye:1200807710858416138>\ | Player has been: \`Disconnected\``);
+        const embed = new EmbedBuilder().setColor(client.color).setDescription(`\<a:sadcatrunning:1213409603828584523>\ | Trình phát đã: \`Ngắt kết nối\``);
 
         return interaction.editReply({ embeds: [embed] });
     },
