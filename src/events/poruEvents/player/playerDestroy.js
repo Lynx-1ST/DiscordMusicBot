@@ -4,7 +4,7 @@ module.exports.run = async (client, player) => {
     const channel = client.channels.cache.get(player.textChannel);
     if (!channel) return;
 
-    // If 247 activated, this will auto connect voice when bot disconnected/destroyed
+    // If 247 activated, this will auto connect voice when bot disconnected/destoryed
     const data = await Reconnect.findOne({ guild: player.guildId });
 
     if (data && Date.now() >= data.time) {
@@ -16,19 +16,15 @@ module.exports.run = async (client, player) => {
     if (data) {
         const voices = client.channels.cache.get(data.voice);
 
-        // Create a timeout to delay the action by a certain amount of time
-        const delay = 5000; // Đặt thời gian chờ 5 giây (5000 milliseconds) - có thể thay đổi tùy ý
-        setTimeout(async () => {
-            if (player.state !== "DESTROYING") {
-                await client.poru.createConnection({
-                    guildId: data.guild,
-                    voiceChannel: data.voice,
-                    textChannel: data.text,
-                    region: voices.rtcRegion || undefined,
-                    deaf: true,
-                });
-            }
-        }, delay);
+        if (player.state !== "DESTROYING") {
+            await client.poru.createConnection({
+                guildId: data.guild,
+                voiceChannel: data.voice,
+                textChannel: data.text,
+                region: voices.rtcRegion || undefined,
+                deaf: true,
+            });
+        }
     }
     //
 

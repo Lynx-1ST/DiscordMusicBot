@@ -17,13 +17,16 @@ module.exports.run = async (client, player) => {
     } // Disable this "if" when 247 command settings premium is set to "false".
 
     if (data) return;
-    //
 
-    await player.destroy();
+    // Create a timeout to delay the action by a certain amount of time
+    const delay = 5000; // Đặt thời gian chờ 5 giây (5000 milliseconds) - có thể thay đổi tùy ý
+    setTimeout(async () => {
+        await player.destroy();
 
-    const embed = new EmbedBuilder()
-        .setDescription(`\`👋\` | Đã ngắt kết nối...!!! Do hàng đợi trống. Điều này có thể được vô hiệu hóa bằng cách sử dụng lệnh \`247\`.`)
-        .setColor(client.color);
+        const embed = new EmbedBuilder()
+            .setDescription(`\`👋\` | Đã ngắt kết nối...!!! Do hàng đợi trống. Điều này có thể được vô hiệu hóa bằng cách sử dụng lệnh \`247\`.`)
+            .setColor(client.color);
 
-    return channel.send({ embeds: [embed] });
+        channel.send({ embeds: [embed] });
+    }, delay);
 };
