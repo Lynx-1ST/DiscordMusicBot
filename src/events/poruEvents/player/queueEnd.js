@@ -19,7 +19,7 @@ module.exports.run = async (client, player) => {
     if (data) return;
 
     // Create a timeout to delay the action by a certain amount of time
-    const delay = 5000; // Đặt thời gian chờ 5 giây (5000 milliseconds) - có thể thay đổi tùy ý
+    const delay = 30000; // Đặt thời gian chờ 5 giây (5000 milliseconds) - có thể thay đổi tùy ý
     setTimeout(async () => {
         await player.destroy();
 
