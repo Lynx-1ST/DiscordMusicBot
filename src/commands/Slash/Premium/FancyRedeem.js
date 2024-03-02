@@ -37,7 +37,7 @@ module.exports = {
         const code = await Code.findOne({ code: input.toUpperCase() });
 
         if (user && user.isPremium) {
-            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | You already a premium user.`);
+            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Bạn đã là người dùng cao cấp.`);
 
             return interaction.editReply({ embeds: [embed] });
         }
@@ -118,23 +118,23 @@ module.exports = {
             const expires = moment(user.premium.expiresAt).format("dddd, MMMM Do YYYY HH:mm:ss");
 
             const embed = new EmbedBuilder()
-                .setAuthor({ name: `Premium Redeemed!`, iconURL: client.user.displayAvatarURL() })
-                .setDescription(`Conratulations <:love_Zyrex:1200808808625213560> ${interaction.member}. You've successfully redeem premium code with the following details.`)
+                .setAuthor({ name: `Đã nhận Premium!`, iconURL: client.user.displayAvatarURL() })
+                .setDescription(`Chúc mừng <a:99_yellowcrown:1213402242015699074> ${interaction.member}. Bạn đã đổi thành công mã cao cấp với các chi tiết sau.`)
                 .setThumbnail(interaction.user.displayAvatarURL())
                 .setColor(client.color)
                 .setTimestamp();
 
             if (user.premium.plan === "lifetime") {
                 embed.addFields([
-                    { name: `<:zyrex_Premium:1200808463035551825> | Redeemed By`, value: `\`\`\`${interaction.member.displayName}\`\`\``, inline: true },
-                    { name: `<:plan_Zyrex:1200808535601188964> | Plan Type`, value: `\`\`\`${user.premium.plan}\`\`\``, inline: true },
-                    { name: `<:active_Zyrex:1200808630769954916> | Expired Time`, value: `\`\`\`Never\`\`\``, inline: false },
+                    { name: `<a:99_yellowcrown:1213402242015699074> | Nhận bởi`, value: `\`\`\`${interaction.member.displayName}\`\`\``, inline: true },
+                    { name: `🔶 | Plan`, value: `\`\`\`${user.premium.plan}\`\`\``, inline: true },
+                    { name: `🔶 | Hết hạn`, value: `\`\`\`Never\`\`\``, inline: false },
                 ]);
             } else {
                 embed.addFields([
-                    { name: `<:zyrex_Premium:1200808463035551825> | Redeemed By`, value: `\`\`\`${interaction.member.displayName}\`\`\``, inline: true },
-                    { name: `<:plan_Zyrex:1200808535601188964> | Plan Type`, value: `\`\`\`${user.premium.plan}\`\`\``, inline: true },
-                    { name: `<:active_Zyrex:1200808630769954916> | Expired Time`, value: `\`\`\`${expires}\`\`\``, inline: false },
+                    { name: `<a:99_yellowcrown:1213402242015699074> | Redeemed By`, value: `\`\`\`${interaction.member.displayName}\`\`\``, inline: true },
+                    { name: `🔶 | Plan`, value: `\`\`\`${user.premium.plan}\`\`\``, inline: true },
+                    { name: `🔶 | Hết hạn`, value: `\`\`\`${expires}\`\`\``, inline: false },
                 ]);
             }
 
@@ -142,7 +142,7 @@ module.exports = {
         } else {
             const embed = new EmbedBuilder()
                 .setColor(client.color)
-                .setDescription(`\`❌\` | The provided code was invalid, please use a valid one.`);
+                .setDescription(`\`❌\` | Mã được cung cấp không hợp lệ, vui lòng sử dụng mã hợp lệ.`);
 
             return interaction.editReply({ embeds: [embed] });
         }
