@@ -20,7 +20,7 @@ module.exports = {
     run: async (client, interaction) => {
         await interaction.deferReply({ ephemeral: false });
 
-        const embed = new EmbedBuilder().setDescription(`Use f?generate to Generate Premium Codes`).setColor(client.color);
+        const embed = new EmbedBuilder().setDescription(`Sử dụng +generate để tạo mã cao cấp`).setColor(client.color);
 
         return interaction.editReply({ embeds: [embed] });
     },
