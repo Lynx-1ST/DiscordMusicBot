@@ -1,1 +1,1 @@
-p
+worker: ./src/sharder.js
