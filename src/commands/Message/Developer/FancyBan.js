@@ -3,41 +3,41 @@ const Ban = require("../../../settings/models/Ban.js");
 
 module.exports = {
     name: "ban",
-    description: "Ban a user from using the bot.",
-    category: "Developer",
+    description: "Cấm người dùng sử dụng bot.",
+    category: "Phát triển",
     aliases: ["banuser"],
     owner: true,
     run: async (client, message, args) => {
         let id = args[0];
         let type = args[1];
 
-        if (!id) return message.reply({ content: "✖️ | Please provide a user ID." });
+        if (!id) return message.reply({ content: "✖️ | Cung cấp ID người dùng." });
 
         let REGEX = new RegExp(/^[0-9]+$/);
 
         if (!REGEX.test(id)) {
-            const embed = new EmbedBuilder().setDescription(`\✖️\ | The ID must be a number.`).setColor(client.color);
+            const embed = new EmbedBuilder().setDescription(`\✖️\ | ID phải là một dãy số.`).setColor(client.color);
 
             return message.reply({ embeds: [embed] });
         }
 
-        if (!type) return message.reply({ content: "\✖️\ | Please provide a type. `enable` or `disable`." });
+        if (!type) return message.reply({ content: "\✖️\ | Nhập lệnh. `bật` hoặc `tắt`." });
 
-        let typeMode = ["enable", "disable"];
+        let typeMode = ["bật", "tắt"];
 
-        if (!typeMode.includes(type)) return message.reply({ content: "\✖️\ | Please provide a valid type. `enable` or `disable`." });
+        if (!typeMode.includes(type)) return message.reply({ content: "\✖️\ | Nhập lệnh. `bật` hoặc `tắt`." });
 
         const user = await Ban.findOne({ userID: id });
 
         if (!user) {
-            const embed = new EmbedBuilder().setDescription(`\✖️\ | \`${id}\` is not in my database.`).setColor(client.color);
+            const embed = new EmbedBuilder().setDescription(`\✖️\ | \`${id}\` không có trong database.`).setColor(client.color);
 
             return message.reply({ embeds: [embed] });
         }
 
         if (type === "enable") {
             if (user.isBanned === true) {
-                const embed = new EmbedBuilder().setDescription(`\✖️\ | \`${id}\` is already banned.`).setColor(client.color);
+                const embed = new EmbedBuilder().setDescription(`\✖️\ | \`${id}\` đã bị ban rồi.`).setColor(client.color);
 
                 return message.reply({ embeds: [embed] });
             } else {
@@ -53,7 +53,7 @@ module.exports = {
             }
         } else if (type === "disable") {
             if (user.isBanned === false) {
-                const embed = new EmbedBuilder().setDescription(`\✖️\ | \`${id}\` is not banned.`).setColor(client.color);
+                const embed = new EmbedBuilder().setDescription(`\✖️\ | \`${id}\` chưa bị ban.`).setColor(client.color);
 
                 return message.reply({ embeds: [embed] });
             } else {
@@ -63,7 +63,7 @@ module.exports = {
 
                 await user.save();
 
-                const embed = new EmbedBuilder().setDescription(`<a:check_mark:1213409895483965490> | You've successfully unbanned \`${id}\`.`).setColor(client.color);
+                const embed = new EmbedBuilder().setDescription(`<a:check_mark:1213409895483965490> | Gỡ ban thành công \`${id}\`.`).setColor(client.color);
 
                 return message.reply({ embeds: [embed] });
             }

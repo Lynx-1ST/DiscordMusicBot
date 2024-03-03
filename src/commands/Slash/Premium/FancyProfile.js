@@ -27,7 +27,7 @@ module.exports = {
 
         const embed = new EmbedBuilder()
             .setAuthor({
-                name: `${interaction.user.tag} Premium Details`,
+                name: `${interaction.user.tag} Chi tiết Premium`,
                 iconURL: client.user.displayAvatarURL({ dynamic: true }),
             })
             .setColor(client.color)

@@ -26,7 +26,7 @@ module.exports = {
     permissions: {
         bot: [],
         channel: [],
-        user: ["ManageGuild"],
+        user: [],
     },
     settings: {
         inVc: true,

@@ -9,7 +9,7 @@ module.exports = {
     permissions: {
         bot: ["Speak", "Connect"],
         channel: ["Speak", "Connect"],
-        user: ["Administrator"],
+        user: [],
     },
     settings: {
         inVc: true,

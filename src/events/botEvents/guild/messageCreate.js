@@ -37,7 +37,7 @@ module.exports.run = async (client, message) => {
 
     if (!command) return;
 
-    const row = new ActionRowBuilder().addComponents(new ButtonBuilder().setLabel("Vote Fancy").setURL(voteUrl).setStyle(ButtonStyle.Link));
+    const row = new ActionRowBuilder().addComponents(new ButtonBuilder().setLabel("Support 🛡️").setURL(voteUrl).setStyle(ButtonStyle.Link));
 
     if (client.dev.has(true) && message.author.id !== client.owner) {
         return message.reply({

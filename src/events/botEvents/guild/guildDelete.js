@@ -8,21 +8,21 @@ module.exports.run = async (client, guild) => {
 
     const embed = new EmbedBuilder()
         .setAuthor({
-            name: `Lefted a Server!`,
+            name: `Đã thoát máy chủ!`,
             iconURL: client.user.displayAvatarURL({ dynamic: true }),
         })
         .addFields([
-            { name: "Name", value: `\`\`\`${guild.name}\`\`\``, inline: true },
+            { name: "Tên", value: `\`\`\`${guild.name}\`\`\``, inline: true },
             { name: "ID", value: `\`\`\`${guild.id}\`\`\``, inline: true },
-            { name: "Member Count", value: `\`\`\`${guild.memberCount} Members\`\`\``, inline: true },
+            { name: "Số thành viên", value: `\`\`\`${guild.memberCount} người dùng\`\`\``, inline: true },
             {
-                name: "Owner",
+                name: "Chủ sở hữu",
                 value: `\`\`\`${guild.members.cache.get(own.id) ? guild.members.cache.get(own.id).user.tag : "Unknown user"} | ${
                     own.id
                 }\`\`\``,
             },
-            { name: "Creation Date", value: `\`\`\`${moment.utc(guild.createdAt).format("DD/MMM/YYYY")}\`\`\`` },
-            { name: `${client.user.username}'s Server Count`, value: `\`\`\`${client.guilds.cache.size} Servers\`\`\`` },
+            { name: "Ngày tạo", value: `\`\`\`${moment.utc(guild.createdAt).format("DD/MMM/YYYY")}\`\`\`` },
+            { name: `Số máy chủ của ${client.user.username}`, value: `\`\`\`${client.guilds.cache.size} Máy chủ\`\`\`` },
         ])
         .setColor(client.color)
         .setTimestamp();

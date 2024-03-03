@@ -22,7 +22,7 @@ module.exports = {
 
         const embed = new EmbedBuilder()
             .setAuthor({
-                name: `${client.user.username} Node Fancy Premium Information!`,
+                name: `${client.user.username} Thông tin Node!`,
                 iconURL: message.guild.iconURL({ dynamic: false }),
             })
             .setColor(client.color)

@@ -13,7 +13,7 @@ module.exports.run = async (client, interaction) => {
         if (!command) return;
 
         const row = new ActionRowBuilder().addComponents(
-            new ButtonBuilder().setLabel("Vote Fancy").setURL(voteUrl).setStyle(ButtonStyle.Link),
+            new ButtonBuilder().setLabel("Support 🛡️").setURL(voteUrl).setStyle(ButtonStyle.Link),
         );
 
         if (client.dev.has(true) && interaction.user.id !== client.owner) {
