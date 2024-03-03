@@ -20,10 +20,10 @@ module.exports.run = async (client, player, track) => {
     const trackTitle = track.info.title ? titles : "Unknown";
     const Started = new EmbedBuilder()
         .setAuthor({
-            name: `--- ĐANG PHÁT 💎---`,
+            name: `—————— ĐANG PHÁT ——————`,
             iconURL: "https://cdn.discordapp.com/emojis/1189604441213644851.gif", // Thay "track.info.authorImage" bằng đường dẫn hình ảnh của tác giả
         })
-        .setDescription(`**[${trackTitle}](${track.info.uri})**`)
+        .setDescription(`・❥・ **[${trackTitle}](${track.info.uri})**`)
         .setThumbnail(client.user.displayAvatarURL())
         .setImage(track.info.image)
         .addFields([

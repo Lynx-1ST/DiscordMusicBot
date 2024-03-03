@@ -11,7 +11,7 @@ module.exports.run = async (client, player, track) => {
     if (player.queue.length) {
         await player.stop();
 
-        const embed = new EmbedBuilder().setDescription(`\`❌\` | Failed to load the track: \`Auto-Stop\``).setColor(client.color);
+        const embed = new EmbedBuilder().setDescription(`\`❌\` | Lỗi khi tạo bản nhạc: \`Tự động dừng\``).setColor(client.color);
 
         return channel.send({ embeds: [embed] });
     } else {

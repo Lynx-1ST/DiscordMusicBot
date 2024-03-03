@@ -26,7 +26,7 @@ module.exports = {
 
         await player.destroy();
 
-        const embed = new EmbedBuilder().setColor(client.color).setDescription(`\ <a:sadcatrunning:1213409603828584523>\ | Trình phát đã: \`Ngắt kết nối\``);
+        const embed = new EmbedBuilder().setColor(client.color).setDescription(`\<a:sadcatrunning:1213409603828584523>\ | Trình phát đã: \`Ngắt kết nối\``);
 
         return interaction.editReply({ embeds: [embed] });
     },
