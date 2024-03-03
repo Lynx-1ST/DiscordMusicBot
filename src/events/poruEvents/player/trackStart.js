@@ -18,21 +18,22 @@ module.exports.run = async (client, player, track) => {
     const trackDuration = track.info.isStream ? "LIVE" : formatDuration(track.info.length);
     const trackAuthor = track.info.author ? authors : "Unknown";
     const trackTitle = track.info.title ? titles : "Unknown";
-    const Started = new EmbedBuilder()
+    const Started = new EmbedBuilder();
+    const loopStatus = player.loop === "QUEUE" ? "Có" : "Không"
         .setAuthor({
             name: `—— ĐANG PHÁT ——`,
             iconURL: "https://cdn.discordapp.com/emojis/1189604441213644851.gif", // Thay "track.info.authorImage" bằng đường dẫn hình ảnh của tác giả
         })
-        .setDescription(`・❥・**[${trackTitle}](${track.info.uri})**`)
+        .setDescription(`<a:load:1213818804610531408>**[${trackTitle}](${track.info.uri})**`)
         .setThumbnail(client.user.displayAvatarURL())
         .setImage(track.info.image)
         .addFields([
             { name: `Tác giả:`, value: `${trackAuthor}`, inline: true },
-            { name: `Yêu cầu bởi:`, value: `${track.info.requester}`, inline: true },
+            { name: `Yêu cầu:`, value: `${track.info.requester}`, inline: true },
             { name: `Thời lượng:`, value: `${trackDuration}`, inline: true },
         ])
         .setColor(client.color)
-        .setFooter({ text: `Chế độ Lặp lại: ${capital(player.loop)} • Hàng chờ còn lại: ${player.queue.length} • Âm lượng: ${player.volume}%` });
+        .setFooter({ text: `Chế độ Lặp lại: ${loopStatus} • Hàng chờ còn lại: ${player.queue.length} • Âm lượng: ${player.volume}%` });
 
 
     const emoji = client.emoji.button;
@@ -87,7 +88,7 @@ module.exports.run = async (client, player, track) => {
                 player.setLoop("TRACK");
 
                 Started.setFooter({
-                    text: `Chế độ Lặp lại: ${capital(player.loop)} • Hàng chờ còn lại: ${player.queue.length} • Âm lượng: ${player.volume}%`,
+                    text: `Chế độ Lặp lại: ${loopStatus} • Hàng chờ còn lại: ${player.queue.length} • Âm lượng: ${player.volume}%`,
                 });
 
                 bLoop.setEmoji(emoji.loop.track).setStyle(ButtonStyle.Primary);
@@ -99,7 +100,7 @@ module.exports.run = async (client, player, track) => {
                 player.setLoop("QUEUE");
 
                 Started.setFooter({
-                    text: `Chế độ Lặp lại: ${capital(player.loop)} • Hàng chờ còn lại: ${player.queue.length} • Âm lượng: ${player.volume}%`,
+                    text: `Chế độ Lặp lại: ${loopStatus} • Hàng chờ còn lại: ${player.queue.length} • Âm lượng: ${player.volume}%`,
                 });
 
                 bLoop.setEmoji(emoji.loop.queue).setStyle(ButtonStyle.Success);
@@ -111,7 +112,7 @@ module.exports.run = async (client, player, track) => {
                 player.setLoop("NONE");
 
                 Started.setFooter({
-                    text: `Chế độ Lặp lại: ${capital(player.loop)} • Hàng chờ còn lại: ${player.queue.length} • Âm lượng: ${player.volume}%`,
+                    text: `Chế độ Lặp lại: ${loopStatus} • Hàng chờ còn lại: ${player.queue.length} • Âm lượng: ${player.volume}%`,
                 });
 
                 bLoop.setEmoji(emoji.loop.none).setStyle(ButtonStyle.Secondary);
@@ -277,7 +278,7 @@ module.exports.run = async (client, player, track) => {
                     .setDescription(`**[${currentTitle}](${player.currentTrack.info.uri})**`)
                     .addFields([
                         { name: `Tác giả:`, value: `${currentAuthor}`, inline: true },
-                        { name: `Yêu cầu bởi:`, value: `${player.currentTrack.info.requester}`, inline: true },
+                        { name: `Yêu cầu:`, value: `${player.currentTrack.info.requester}`, inline: true },
                         { name: `Nguồn:`, value: `${sources}`, inline: true },
                         { name: `Thời lượng:`, value: `${playerDuration}`, inline: true },
                         { name: `Âm lượng:`, value: `${player.volume}%`, inline: true },
