@@ -18,8 +18,7 @@ module.exports.run = async (client, player, track) => {
     const trackDuration = track.info.isStream ? "LIVE" : formatDuration(track.info.length);
     const trackAuthor = track.info.author ? authors : "Unknown";
     const trackTitle = track.info.title ? titles : "Unknown";
-    const Started = new EmbedBuilder();
-    const loopStatus = player.loop === "QUEUE" ? "Có" : "Không"
+    const Started = new EmbedBuilder()
         .setAuthor({
             name: `—— ĐANG PHÁT ——`,
             iconURL: "https://cdn.discordapp.com/emojis/1189604441213644851.gif", // Thay "track.info.authorImage" bằng đường dẫn hình ảnh của tác giả
