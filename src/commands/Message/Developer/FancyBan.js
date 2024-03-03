@@ -4,7 +4,7 @@ const Ban = require("../../../settings/models/Ban.js");
 module.exports = {
     name: "ban",
     description: "Cấm người dùng sử dụng bot.",
-    category: "Phát triển",
+    category: "Developer",
     aliases: ["banuser"],
     owner: true,
     run: async (client, message, args) => {

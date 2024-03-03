@@ -3,7 +3,7 @@ const { EmbedBuilder } = require("discord.js");
 module.exports = {
     name: "maintenance",
     description: "Chế độ bảo trì.",
-    category: "Phát triển",
+    category: "Developer",
     aliases: ["maintenance", "mt"],
     owner: true,
     run: async (client, message, args) => {

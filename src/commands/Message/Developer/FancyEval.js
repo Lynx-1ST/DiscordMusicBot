@@ -1,7 +1,7 @@
 module.exports = {
     name: "eval",
     description: "Bot eval.",
-    category: "Phát triển",
+    category: "Developer",
     aliases: [],
     owner: true,
     run: (client, message) => {
