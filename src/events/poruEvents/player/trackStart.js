@@ -5,8 +5,6 @@ const capital = require("node-capitalize");
 
 module.exports.run = async (client, player, track) => {
     let Control = await GControl.findOne({ guild: player.guildId });
-
-    // This is the default setting for button control
     if (!Control) {
         Control = await GControl.create({ guild: player.guildId, playerControl: "enable" });
     }
@@ -18,10 +16,11 @@ module.exports.run = async (client, player, track) => {
     const trackDuration = track.info.isStream ? "LIVE" : formatDuration(track.info.length);
     const trackAuthor = track.info.author ? authors : "Unknown";
     const trackTitle = track.info.title ? titles : "Unknown";
+
     const Started = new EmbedBuilder()
         .setAuthor({
             name: `—— ĐANG PHÁT ——`,
-            iconURL: "https://cdn.discordapp.com/emojis/1189604441213644851.gif", // Thay "track.info.authorImage" bằng đường dẫn hình ảnh của tác giả
+            iconURL: "https://cdn.discordapp.com/emojis/1189604441213644851.gif",
         })
         .setDescription(`<a:load:1213818804610531408> **[${trackTitle}](${track.info.uri})** <a:load:1213818804610531408>`)
         .setThumbnail(client.user.displayAvatarURL())
@@ -34,40 +33,34 @@ module.exports.run = async (client, player, track) => {
         .setColor(client.color)
         .setFooter({ text: `Chế độ Lặp lại: ${capital(player.loop)} • Hàng chờ còn lại: ${player.queue.length} • Âm lượng: ${player.volume}%` });
 
-
     const emoji = client.emoji.button;
+    const buttons = [
+        { customId: "replay", emoji: emoji.replay, style: ButtonStyle.Secondary },
+        { customId: "prev", emoji: emoji.previous, style: ButtonStyle.Secondary },
+        { customId: "pause", emoji: emoji.pause, style: ButtonStyle.Secondary },
+        { customId: "skip", emoji: emoji.skip, style: ButtonStyle.Secondary },
+        { customId: "loop", emoji: emoji.loop.none, style: ButtonStyle.Secondary },
+        { customId: "shuffle", emoji: emoji.shuffle, style: ButtonStyle.Secondary },
+        { customId: "voldown", emoji: emoji.voldown, style: ButtonStyle.Secondary },
+        { customId: "stop", emoji: emoji.stop, style: ButtonStyle.Danger },
+        { customId: "volup", emoji: emoji.volup, style: ButtonStyle.Secondary },
+        { customId: "info", emoji: emoji.info, style: ButtonStyle.Secondary }
+    ];
 
-    const bReplay = new ButtonBuilder().setCustomId("replay").setEmoji(emoji.replay).setStyle(ButtonStyle.Secondary);
-    const bPrev = new ButtonBuilder().setCustomId("prev").setEmoji(emoji.previous).setStyle(ButtonStyle.Secondary);
-    const bPause = new ButtonBuilder().setCustomId("pause").setEmoji(emoji.pause).setStyle(ButtonStyle.Secondary);
-    const bSkip = new ButtonBuilder().setCustomId("skip").setEmoji(emoji.skip).setStyle(ButtonStyle.Secondary);
-    const bLoop = new ButtonBuilder().setCustomId("loop").setEmoji(emoji.loop.none).setStyle(ButtonStyle.Secondary);
-    const bShuffle = new ButtonBuilder().setCustomId("shuffle").setEmoji(emoji.shuffle).setStyle(ButtonStyle.Secondary);
-    const bVDown = new ButtonBuilder().setCustomId("voldown").setEmoji(emoji.voldown).setStyle(ButtonStyle.Secondary);
-    const bStop = new ButtonBuilder().setCustomId("stop").setEmoji(emoji.stop).setStyle(ButtonStyle.Danger);
-    const bVUp = new ButtonBuilder().setCustomId("volup").setEmoji(emoji.volup).setStyle(ButtonStyle.Secondary);
-    const bInfo = new ButtonBuilder().setCustomId("info").setEmoji(emoji.info).setStyle(ButtonStyle.Secondary);
+    const buttonRows = buttons.map(btn => new ButtonBuilder().setCustomId(btn.customId).setEmoji(btn.emoji).setStyle(btn.style));
+    const actionRow1 = new ActionRowBuilder().addComponents(buttonRows.slice(0, 5));
+    const actionRow2 = new ActionRowBuilder().addComponents(buttonRows.slice(5));
 
-    const button = new ActionRowBuilder().addComponents(bReplay, bPrev, bPause, bSkip, bLoop);
-    const button2 = new ActionRowBuilder().addComponents(bShuffle, bVDown, bStop, bVUp, bInfo);
-
-    // When set to "disable", button control won't show.
     if (Control.playerControl === "disable") {
-        return client.channels.cache
-            .get(player.textChannel)
-            .send({ embeds: [Started] })
-            .then((x) => (player.message = x));
+        return client.channels.cache.get(player.textChannel).send({ embeds: [Started] }).then(x => (player.message = x));
     }
 
-    const nplaying = await client.channels.cache
-        .get(player.textChannel)
-        .send({ embeds: [Started], components: [button, button2] })
-        .then((x) => (player.message = x));
+    const nplaying = await client.channels.cache.get(player.textChannel).send({ embeds: [Started], components: [actionRow1, actionRow2] }).then(x => (player.message = x));
 
     const filter = (message) => {
-        if (message.guild.members.me.voice.channel && message.guild.members.me.voice.channelId === message.member.voice.channelId)
+        if (message.guild.members.me.voice.channel && message.guild.members.me.voice.channelId === message.member.voice.channelId) {
             return true;
-        else {
+        } else {
             message.reply({
                 content: `\`❌\` | Bạn phải ở cùng kênh thoại với tôi để sử dụng nút này.`,
                 ephemeral: true,
@@ -75,8 +68,8 @@ module.exports.run = async (client, player, track) => {
         }
     };
 
-    const collector = nplaying.createMessageComponentCollector({ filter, time: track.info.lenght });
-
+    const collector = nplaying.createMessageComponentCollector({ filter, time: track.info.length });
+        // Xử lý các sự kiện khi nhấn vào các nút ở đây
     collector.on("collect", async (message) => {
         if (message.customId === "loop") {
             if (!player) {
