@@ -11,16 +11,16 @@ module.exports = {
   disableYouTube: parseBoolean(process.env.DISABLE_YOUTUBE || "false"), // <==== SET "TRUE OR FALSE" | ENABLE/DISABLE YOUTUBE FEATURES. DISABLING THIS WILL MAKE "AUTOPLAY" COMMANDS USELESS!!!
 
   // ⬇⬇⬇ PORU DETAILS
-  playSource: process.env.PLAY_SOURCE || "ytsearch", // <==== SET YOUR PLAY SOURCE || "ytsearch","ytmsearch","scsearch"
+  playSource: process.env.PLAY_SOURCE || "ytsearch,ytmsearch,scsearch", // <==== SET YOUR PLAY SOURCE || "ytsearch","ytmsearch","scsearch"
   poruOptions: {
     defaultPlatform: process.env.DEFAULT_SOURCE || "ytsearch", // <==== SET DEFAULT SOURCE || "ytsearch","ytmsearch","scsearch"
     clientID: process.env.SPOTIFY_ID || "e35788ef31ae406ba4acf67293417cdd", // <==== SPOTIFY CLIENT ID
     clientSecret: process.env.SPOTIFY_SECRET || "713fcc61c58e418e92b44fe05a25e30c", // <==== SPOTIFY CLIENT SECRET
-    reconnectTries: 5, // <==== TOTAL ATTEMPS TO TRY IF RECONNECT FAILED. YOU CAN CHANGE IT TO "Infinity" FOR UNLIMITED ATTEMPS.
+    reconnectTries: Infinity, // <==== TOTAL ATTEMPS TO TRY IF RECONNECT FAILED. YOU CAN CHANGE IT TO "Infinity" FOR UNLIMITED ATTEMPS.
     playlistLimit: 2, // <==== 1 = 100 TRACKS
     albumLimit: 2, // <==== 1 = 50 TRACKS
     artistLimit: 2, // <==== 1 = 50 TRACKS
-    searchMarket: "vi",
+    searchMarket: "en",
   },
   nodes: [
     {
