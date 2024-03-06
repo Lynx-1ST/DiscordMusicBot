@@ -69,7 +69,7 @@ module.exports = {
 
             let collector = await msg.createMessageComponentCollector({
                 filter,
-                time: 100000,
+                time: 300000,
             });
 
             collector.on("collect", async (m) => {
