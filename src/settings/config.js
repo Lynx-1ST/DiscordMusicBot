@@ -7,7 +7,7 @@ module.exports = {
   color: process.env.EMBED_COLOR || "#2f3136", // <==== YOU EMBEDED HEX COLOR
   owner: process.env.OWNER_ID || "1081547609979756596", // <==== BOTS OWNER ID
   guildLogs: process.env.GUILD_LOGS || "1203748123961327707", // <==== YOUR SERVER JOIN LEFT LOGS CHANNEL ID
-  leaveTimeout: process.env.LEAVE_TIMEOUT || "40000", // <==== SET LEAVE TIMEOUT WHEN BOT WAS ALONE || 1000 = 1sec
+  leaveTimeout: process.env.LEAVE_TIMEOUT || "60000", // <==== SET LEAVE TIMEOUT WHEN BOT WAS ALONE || 1000 = 1sec
   disableYouTube: parseBoolean(process.env.DISABLE_YOUTUBE || "false"), // <==== SET "TRUE OR FALSE" | ENABLE/DISABLE YOUTUBE FEATURES. DISABLING THIS WILL MAKE "AUTOPLAY" COMMANDS USELESS!!!
 
   // ⬇⬇⬇ PORU DETAILS
@@ -24,12 +24,12 @@ module.exports = {
   },
   nodes: [
     {
-      name: process.env.NODE_NAME1 || "Main", 
-      host: process.env.NODE_HOST1 || "lava.link", 
-      port: parseInt(process.env.NODE_PORT1 || "80"), 
-      password: process.env.NODE_PASSWORD1 || "kronix", 
+      name: process.env.NODE_NAME1 || "Main",
+      host: process.env.NODE_HOST1 || "lava.link",
+      port: parseInt(process.env.NODE_PORT1 || "80"),
+      password: process.env.NODE_PASSWORD1 || "LAVA",
       secure: parseBoolean(process.env.NODE_SECURE1 || "false"),
-      regions: process.env.NODE_REGIONS1 || ["singapore"], 
+      regions: process.env.NODE_REGIONS1 || ["singapore"],
     }
   ],
 

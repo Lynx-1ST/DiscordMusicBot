@@ -17,16 +17,18 @@ module.exports.run = async (client, player) => {
     } // Disable this "if" when 247 command settings premium is set to "false".
 
     if (data) return;
+    //
 
-    // Create a timeout to delay the action by a certain amount of time
-    const delay = 100000; // Đặt thời gian chờ 5 giây (5000 milliseconds) - có thể thay đổi tùy ý
+    // Add a delay before disconnecting
+    const disconnectDelay = 90000; // Delay in milliseconds (5 seconds in this example)
+
     setTimeout(async () => {
         await player.destroy();
 
         const embed = new EmbedBuilder()
-            .setDescription(`\`👋\` | Đã ngắt kết nối...!!! Do hàng đợi trống. Điều này có thể được vô hiệu hóa bằng cách sử dụng lệnh \`247\`.`)
+            .setDescription(`\`👋\` | Disconnected...!!! Due to queue was empty. This can be disable by using \`247\` command.`)
             .setColor(client.color);
 
-        channel.send({ embeds: [embed] });
-    }, delay);
+        return channel.send({ embeds: [embed] });
+    }, disconnectDelay);
 };
