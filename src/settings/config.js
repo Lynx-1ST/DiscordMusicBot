@@ -11,7 +11,7 @@ module.exports = {
   disableYouTube: parseBoolean(process.env.DISABLE_YOUTUBE || "false"), // <==== SET "TRUE OR FALSE" | ENABLE/DISABLE YOUTUBE FEATURES. DISABLING THIS WILL MAKE "AUTOPLAY" COMMANDS USELESS!!!
 
   // ⬇⬇⬇ PORU DETAILS
-  playSource: process.env.PLAY_SOURCE || "ytsearch,ytmsearch,scsearch", // <==== SET YOUR PLAY SOURCE || "ytsearch","ytmsearch","scsearch"
+  playSource: process.env.PLAY_SOURCE || "ytsearch", // <==== SET YOUR PLAY SOURCE || "ytsearch","ytmsearch","scsearch"
   poruOptions: {
     defaultPlatform: process.env.DEFAULT_SOURCE || "ytsearch", // <==== SET DEFAULT SOURCE || "ytsearch","ytmsearch","scsearch"
     clientID: process.env.SPOTIFY_ID || "e35788ef31ae406ba4acf67293417cdd", // <==== SPOTIFY CLIENT ID
