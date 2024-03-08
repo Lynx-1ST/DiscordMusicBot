@@ -7,16 +7,9 @@ module.exports.run = async (client, player) => {
 
     if (player.queue.length) return;
 
-    if (player.isPlaying) {
-        const embed = new EmbedBuilder()
-            .setDescription(`\`❌\` | Không thể ngắt kết nối khi vẫn còn bài hát đang phát.`)
-            .setColor(client.color);
-
-        return channel.send({ embeds: [embed] });
-    }
-
     if (player.message) await player.message.delete();
 
+    // this will make the bot will not be disconneted/destroyed when queue end if 247 activated
     const data = await Reconnect.findOne({ guild: player.guildId });
 
     if (data && Date.now() >= data.time) {
@@ -24,60 +17,18 @@ module.exports.run = async (client, player) => {
     } // Disable this "if" when 247 command settings premium is set to "false".
 
     if (data) return;
+    //
 
-    // Set the countdown duration in milliseconds
-    const countdownDuration = 90000; // 90 seconds in this example
+    // Add a delay before disconnecting
+    const disconnectDelay = 90000; // Delay in milliseconds (5 seconds in this example)
 
-    let countdownActive = true; // Flag to indicate if countdown is active
-
-    const embed = new EmbedBuilder()
-        .setDescription(`\`🕒\` | Đếm ngược: ${countdownDuration / 1000} giây`)
-        .setColor(client.color);
-
-    const countdownMessage = await channel.send({ embeds: [embed] });
-
-    // Countdown logic
-    let remainingTime = countdownDuration;
-    const interval = 1000; // Update every second
-
-    const countdownInterval = setInterval(() => {
-        remainingTime -= interval;
-
-        if (remainingTime <= 0 || !countdownActive) {
-            clearInterval(countdownInterval);
-            if (countdownActive) countdownMessage.delete(); // Delete the countdown message if it hasn't been cancelled
-            return;
-        }
-
-        // Update the embed description with remaining time
-        embed.setDescription(`\`🕒\` | Đếm ngược: ${Math.ceil(remainingTime / 1000)} giây`);
-        countdownMessage.edit({ embeds: [embed] });
-    }, interval);
-
-    // Disconnect player after countdown finishes
     setTimeout(async () => {
-        if (!countdownActive) return; // If countdown was cancelled due to user playing music
-        clearInterval(countdownInterval); // Stop the countdown interval
         await player.destroy();
 
-        const finalEmbed = new EmbedBuilder()
+        const embed = new EmbedBuilder()
             .setDescription(`\`👋\` | Đã ngắt kết nối...!!! Do hàng đợi trống. Điều này có thể được vô hiệu hóa bằng cách sử dụng lệnh \`247\`.`)
             .setColor(client.color);
 
-        return channel.send({ embeds: [finalEmbed] });
-    }, countdownDuration);
-
-    // Event listener to cancel countdown if user starts playing music
-    player.on('start', () => {
-        countdownActive = false;
-        clearInterval(countdownInterval); // Stop the countdown interval
-        countdownMessage.delete(); // Delete the countdown message
-    });
-
-    // Event listener to cancel countdown if user adds a song to the queue
-    player.once('queueAdd', () => {
-        countdownActive = false;
-        clearInterval(countdownInterval); // Stop the countdown interval
-        countdownMessage.delete(); // Delete the countdown message
-    });
+        return channel.send({ embeds: [embed] });
+    }, disconnectDelay);
 };
