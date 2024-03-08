@@ -28,6 +28,8 @@ module.exports.run = async (client, player) => {
     // Set the countdown duration in milliseconds
     const countdownDuration = 90000; // 90 seconds in this example
 
+    let countdownActive = true; // Flag to indicate if countdown is active
+
     const embed = new EmbedBuilder()
         .setDescription(`\`🕒\` | Đếm ngược: ${countdownDuration / 1000} giây`)
         .setColor(client.color);
@@ -41,7 +43,7 @@ module.exports.run = async (client, player) => {
     const countdownInterval = setInterval(() => {
         remainingTime -= interval;
 
-        if (remainingTime <= 0) {
+        if (remainingTime <= 0 || !countdownActive) {
             clearInterval(countdownInterval);
             return;
         }
@@ -53,6 +55,7 @@ module.exports.run = async (client, player) => {
 
     // Disconnect player after countdown finishes
     setTimeout(async () => {
+        if (!countdownActive) return; // If countdown was cancelled due to user playing music
         clearInterval(countdownInterval); // Stop the countdown interval
         await player.destroy();
 
@@ -62,4 +65,9 @@ module.exports.run = async (client, player) => {
 
         return channel.send({ embeds: [finalEmbed] });
     }, countdownDuration);
+
+    // Cancel countdown if user starts playing music
+    player.on('start', () => {
+        countdownActive = false;
+    });
 };
