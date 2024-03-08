@@ -7,7 +7,7 @@ module.exports.run = async (client, player) => {
 
     if (player.queue.length) return;
 
-    if (player.message) await player.message.delete();
+    // if (player.message) await player.message.delete();
 
     // this will make the bot will not be disconneted/destroyed when queue end if 247 activated
     const data = await Reconnect.findOne({ guild: player.guildId });

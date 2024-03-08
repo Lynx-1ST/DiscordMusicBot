@@ -66,8 +66,6 @@ module.exports = {
 
         if (player.state !== "CONNECTED") player.connect();
 
-        if (player.state !== "CONNECTED") player.connect();
-
         if (loadType === "PLAYLIST_LOADED") {
             for (const track of res.tracks) {
                 track.info.requester = interaction.member;
