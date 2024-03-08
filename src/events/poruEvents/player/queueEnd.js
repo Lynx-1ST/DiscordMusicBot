@@ -7,6 +7,14 @@ module.exports.run = async (client, player) => {
 
     if (player.queue.length) return;
 
+    if (player.isPlaying) {
+        const embed = new EmbedBuilder()
+            .setDescription(`\`❌\` | Không thể ngắt kết nối khi vẫn còn bài hát đang phát.`)
+            .setColor(client.color);
+
+        return channel.send({ embeds: [embed] });
+    }
+
     if (player.message) await player.message.delete();
 
     const data = await Reconnect.findOne({ guild: player.guildId });
@@ -21,7 +29,7 @@ module.exports.run = async (client, player) => {
     const countdownDuration = 90000; // 90 seconds in this example
 
     const embed = new EmbedBuilder()
-        .setDescription(`\`🕒\` | Đếm ngược trước khi ngắt kết nối: ${countdownDuration / 1000} giây`)
+        .setDescription(`\`🕒\` | Đếm ngược: ${countdownDuration / 1000} giây`)
         .setColor(client.color);
 
     const countdownMessage = await channel.send({ embeds: [embed] });
@@ -39,7 +47,7 @@ module.exports.run = async (client, player) => {
         }
 
         // Update the embed description with remaining time
-        embed.setDescription(`\`🕒\` | Đếm ngược trước khi ngắt kết nối: ${Math.ceil(remainingTime / 1000)} giây`);
+        embed.setDescription(`\`🕒\` | Đếm ngược: ${Math.ceil(remainingTime / 1000)} giây`);
         countdownMessage.edit({ embeds: [embed] });
     }, interval);
 
