@@ -32,7 +32,7 @@ module.exports.run = async (client, player, track) => {
             { name: `Thời lượng:`, value: `${trackDuration}`, inline: true },
         ])
         .setColor(client.color)
-        .setFooter({ text: `Chế độ Lặp lại: ${capital(player.loop)} • Hàng chờ còn lại: ${player.queue.length} • Âm lượng: ${player.volume}%` });
+        .setFooter({ text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${player.volume}%` });
 
 
     const emoji = client.emoji.button;
@@ -87,7 +87,7 @@ module.exports.run = async (client, player, track) => {
                 player.setLoop("TRACK");
 
                 Started.setFooter({
-                    text: `Chế độ Lặp lại: ${capital(player.loop)} • Hàng chờ còn lại: ${player.queue.length} • Âm lượng: ${player.volume}%`,
+                    text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${player.volume}%`,
                 });
 
                 bLoop.setEmoji(emoji.loop.track).setStyle(ButtonStyle.Primary);
@@ -99,7 +99,7 @@ module.exports.run = async (client, player, track) => {
                 player.setLoop("QUEUE");
 
                 Started.setFooter({
-                    text: `Chế độ Lặp lại: ${capital(player.loop)} • Hàng chờ còn lại: ${player.queue.length} • Âm lượng: ${player.volume}%`,
+                    text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${player.volume}%`,
                 });
 
                 bLoop.setEmoji(emoji.loop.queue).setStyle(ButtonStyle.Success);
