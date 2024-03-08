@@ -41,7 +41,7 @@ module.exports = {
 
             await player.queue.clear();
 
-            const embed = new EmbedBuilder().setDescription(`\`<a:check_mark:1213409895483965490>\` | Tính năng tự động phát đã: \`Tắt\``).setColor(client.color);
+            const embed = new EmbedBuilder().setDescription(`\`🔴\` | Tính năng tự động phát đã: \`Tắt\``).setColor(client.color);
             return interaction.editReply({ embeds: [embed] });
         } else {
             player.autoplay = true;
@@ -56,7 +56,7 @@ module.exports = {
 
             await player.queue.add(res.tracks[Math.floor(Math.random() * res.tracks.length) ?? 1]);
 
-            const embed = new EmbedBuilder().setDescription(`\`<a:check_mark:1213409895483965490>\` | Tính năng tự động phát: \`Bật\``).setColor(client.color);
+            const embed = new EmbedBuilder().setDescription(`\`🟢\` | Tính năng tự động phát: \`Bật\``).setColor(client.color);
             return interaction.editReply({ embeds: [embed] });
         }
     },
