@@ -51,11 +51,15 @@ module.exports.run = async (client, player) => {
 };
 
 // Lắng nghe sự kiện khi có nhạc tiếp tục phát
-client.on("trackStart", () => {
-    deleteWaitingMessage(); // Xoá thông báo chờ
-});
+module.exports.listenToTrackStart = (client) => {
+    client.on("trackStart", () => {
+        deleteWaitingMessage(); // Xoá thông báo chờ
+    });
+};
 
 // Lắng nghe sự kiện khi người dùng thêm bài hát mới
-client.on("trackAdd", () => {
-    deleteWaitingMessage(); // Xoá thông báo chờ
-});
+module.exports.listenToTrackAdd = (client) => {
+    client.on("trackAdd", () => {
+        deleteWaitingMessage(); // Xoá thông báo chờ
+    });
+};
