@@ -69,5 +69,7 @@ module.exports.run = async (client, player) => {
     // Cancel countdown if user starts playing music
     player.on('start', () => {
         countdownActive = false;
+        clearTimeout(countdownTimer);
+        countdownMessage.delete();
     });
 };
