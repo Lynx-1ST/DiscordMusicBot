@@ -26,7 +26,7 @@ module.exports.run = async (client, player) => {
         await player.destroy();
 
         const embed = new EmbedBuilder()
-            .setDescription(`\`👋\` | Disconnected...!!! Due to queue was empty. This can be disable by using \`247\` command.`)
+            .setDescription(`\`👋\` | Đã ngắt kết nối...!!! Do hàng đợi trống. Điều này có thể được vô hiệu hóa bằng cách sử dụng lệnh \`247\`.`)
             .setColor(client.color);
 
         return channel.send({ embeds: [embed] });
