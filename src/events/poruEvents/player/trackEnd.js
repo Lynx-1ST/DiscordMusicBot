@@ -1,7 +1,9 @@
+const { EmbedBuilder } = require("discord.js");
+
 module.exports.run = async (client, player) => {
     if (!player) return;
 
-    if (player.message) await player.message.delete();
+    if (player.message) await player.message.delete().catch(console.error);
 
     if (!player.currentTrack) return;
 
@@ -21,15 +23,16 @@ module.exports.run = async (client, player) => {
                     track.info.requester = trackSearch.requester;
                 }
 
-                await player.queue.add(res.tracks[Math.floor(Math.random() * res.tracks.length) ?? 2]);
+                const randomIndex = Math.floor(Math.random() * res.tracks.length);
+                await player.queue.add(res.tracks[randomIndex]);
             }
         } catch (error) {
             console.error("Error fetching YouTube track:", error);
-            // Xử lý lỗi ở đây, ví dụ: thông báo cho người dùng hoặc thực hiện hành động khác
+            // Handle the error here, for example: notify the user or perform other actions
             const channel = client.channels.cache.get(player.textChannel);
             if (!channel) return;
             const embed = new EmbedBuilder().setDescription(`\`❌\` | Đã xảy ra lỗi khi tải bài hát: \`${error.message}\``).setColor(client.color);
-            return channel.send({embeds: [embed]});
+            return channel.send({ embeds: [embed] }).catch(console.error);
         }
     }
 };

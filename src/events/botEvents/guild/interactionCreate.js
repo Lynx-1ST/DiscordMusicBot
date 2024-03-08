@@ -6,7 +6,7 @@ module.exports.run = async (client, interaction) => {
     if (interaction.type === InteractionType.ApplicationCommand) {
         const command = client.slashCommands.get(interaction.commandName);
 
-        // GETTING PREMIUM USER DATABASW
+        // GETTING PREMIUM USER DATABASE
         let user = client.premium.get(interaction.user.id);
         await client.createInteraction(interaction);
 
