@@ -19,7 +19,7 @@ module.exports = {
 
         const embed = new EmbedBuilder().setColor(client.color).setTimestamp();
 
-        if (value === "enable") {
+        if (value === "bật") {
             if (client.dev.has(enable)) {
                 embed.setDescription(`✖️  | Chế độ bảo trì đã: \`Bật\``);
 
@@ -33,7 +33,7 @@ module.exports = {
             return message.reply({ embeds: [embed] });
         }
 
-        if (value === "disable") {
+        if (value === "tắt") {
             if (!client.dev.has(enable)) {
                 embed.setDescription(`✖️  | Chế độ bảo trì đã: \`Disabled\``);
 
