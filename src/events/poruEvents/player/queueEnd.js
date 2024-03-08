@@ -73,4 +73,11 @@ module.exports.run = async (client, player) => {
         clearInterval(countdownInterval); // Stop the countdown interval
         countdownMessage.delete(); // Delete the countdown message
     });
+
+    // Event listener to cancel countdown if user adds a song to the queue
+    player.once('queueAdd', () => {
+        countdownActive = false;
+        clearInterval(countdownInterval); // Stop the countdown interval
+        countdownMessage.delete(); // Delete the countdown message
+    });
 };
