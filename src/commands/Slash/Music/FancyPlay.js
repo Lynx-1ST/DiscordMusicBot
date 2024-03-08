@@ -61,7 +61,7 @@ module.exports = {
             });
         }
 
-        const res = await client.poru.resolve(song, source); // <<== you can remove this "source" property for default ytsearch source. see config.js for details.
+        const res = await client.poru.resolve(song); // <<== you can remove this "source" property for default ytsearch source. see config.js for details.
         const { loadType, tracks, playlistInfo } = res;
 
         if (player.state !== "CONNECTED") player.connect();
