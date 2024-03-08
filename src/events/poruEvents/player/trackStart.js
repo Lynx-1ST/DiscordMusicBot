@@ -111,7 +111,7 @@ module.exports.run = async (client, player, track) => {
                 player.setLoop("NONE");
 
                 Started.setFooter({
-                    text: `Chế độ Lặp lại: ${capital(player.loop)} • Hàng chờ còn lại: ${player.queue.length} • Âm lượng: ${player.volume}%`,
+                    text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${player.volume}%`,
                 });
 
                 bLoop.setEmoji(emoji.loop.none).setStyle(ButtonStyle.Secondary);
@@ -222,7 +222,7 @@ module.exports.run = async (client, player, track) => {
                 await player.setVolume(player.volume - 10);
 
                 Started.setFooter({
-                    text: `Chế độ Lặp lại: ${capital(player.loop)} • Hàng chờ còn lại: ${player.queue.length} • Âm lượng: ${player.volume}%`,
+                    text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${player.volume}%`,
                 });
 
                 await nplaying.edit({ embeds: [Started], components: [button, button2] });
@@ -242,7 +242,7 @@ module.exports.run = async (client, player, track) => {
                 await player.setVolume(player.volume + 10);
 
                 Started.setFooter({
-                    text: `Hàng đợi còn lại: ${player.queue.length} • Chế độ lặp lại: ${capital(player.loop)} • Âm lượng: ${player.volume}%`,
+                    text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${player.volume}%`,
                 });
 
                 await nplaying.edit({ embeds: [Started], components: [button, button2] });
