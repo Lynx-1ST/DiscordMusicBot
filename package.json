@@ -7,6 +7,8 @@
     "start": "node ./src/sharder.js"
   },
   "dependencies": {
+    "lavalink": "^2.13.0",
+    "lavacord": "^0.11.0",
     "common-tags": "^1.8.2",
     "cpu-stat": "^2.0.1",
     "delay": "^6.0.0",

@@ -11,5 +11,15 @@ const client = new MainClient();
 
 client.connect();
 
-module.exports = client;
+// Start Lavalink
+const lavalink = require('lavalink');
+const nodes = [
+  { host: 'localhost', port: 2333, region: 'singapore', password: 'loc.1005' }
+];
+const manager = new lavalink.Manager(nodes, {
+  user: client.user.id,
+  shards: 1
+});
+manager.connect();
 
+module.exports = client;
