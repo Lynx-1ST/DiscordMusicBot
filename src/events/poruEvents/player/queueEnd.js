@@ -45,6 +45,7 @@ module.exports.run = async (client, player) => {
 
         if (remainingTime <= 0 || !countdownActive) {
             clearInterval(countdownInterval);
+            if (countdownActive) countdownMessage.delete(); // Delete the countdown message if it hasn't been cancelled
             return;
         }
 
@@ -66,10 +67,10 @@ module.exports.run = async (client, player) => {
         return channel.send({ embeds: [finalEmbed] });
     }, countdownDuration);
 
-    // Cancel countdown if user starts playing music
+    // Event listener to cancel countdown if user starts playing music
     player.on('start', () => {
         countdownActive = false;
-        clearTimeout(countdownTimer);
-        countdownMessage.delete();
+        clearInterval(countdownInterval); // Stop the countdown interval
+        countdownMessage.delete(); // Delete the countdown message
     });
 };
