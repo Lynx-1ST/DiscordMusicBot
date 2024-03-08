@@ -1,7 +1,7 @@
 const { EmbedBuilder } = require("discord.js");
 const Reconnect = require("../../../settings/models/247.js");
 
-let songAdded = false; // Biến đánh dấu nếu có bài hát mới được thêm
+let disconnectTimeout; // Biến lưu trữ đối tượng timeout
 
 module.exports.run = async (client, player) => {
     const channel = client.channels.cache.get(player.textChannel);
@@ -18,7 +18,7 @@ module.exports.run = async (client, player) => {
         await data.delete();
     } // Disable this "if" when 247 command settings premium is set to "false".
 
-    if (data || songAdded) return;
+    if (data) return;
 
     // Add a delay before disconnecting
     const disconnectDelay = 90000; // Delay in milliseconds (90 seconds in this example)
@@ -29,7 +29,14 @@ module.exports.run = async (client, player) => {
 
     const waitingMessage = await channel.send({ embeds: [embed] });
 
-    setTimeout(async () => {
+    // Xoá thông báo chờ và reset timeout nếu có sự kiện tiếp tục phát nhạc hoặc thêm bài hát mới
+    const deleteWaitingMessage = () => {
+        clearTimeout(disconnectTimeout);
+        waitingMessage.delete().catch(console.error);
+    };
+
+    // Set timeout để ngắt kết nối sau thời gian quy định
+    disconnectTimeout = setTimeout(async () => {
         await player.destroy();
 
         const finalEmbed = new EmbedBuilder()
@@ -43,12 +50,12 @@ module.exports.run = async (client, player) => {
     }, disconnectDelay);
 };
 
-// Lắng nghe sự kiện khi người dùng thêm bài hát mới
-client.on("trackAdd", () => {
-    songAdded = true;
+// Lắng nghe sự kiện khi có nhạc tiếp tục phát
+client.on("trackStart", () => {
+    deleteWaitingMessage(); // Xoá thông báo chờ
 });
 
-// Lắng nghe sự kiện khi người dùng bắt đầu phát bài hát mới
-client.on("trackStart", () => {
-    songAdded = false; // Đặt biến đánh dấu về false khi bắt đầu phát bài hát mới
+// Lắng nghe sự kiện khi người dùng thêm bài hát mới
+client.on("trackAdd", () => {
+    deleteWaitingMessage(); // Xoá thông báo chờ
 });
