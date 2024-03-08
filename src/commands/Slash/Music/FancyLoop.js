@@ -41,13 +41,13 @@ module.exports = {
 
         const Control = await GControl.findOne({ guild: interaction.guild.id });
 
-        // When button control "enable", this will make command unable to use. You can delete this
+        /*// When button control "enable", this will make command unable to use. You can delete this
         if (Control.playerControl === "enable") {
             const ctrl = new EmbedBuilder()
                 .setColor(client.color)
                 .setDescription(`\✖️\ | Bạn không thể sử dụng lệnh này vì điều khiển trình phát đã được bật!`);
             return interaction.editReply({ embeds: [ctrl] });
-        }
+        }*/
 
         const player = client.poru.players.get(interaction.guild.id);
         const input = interaction.options.getString("mode");
