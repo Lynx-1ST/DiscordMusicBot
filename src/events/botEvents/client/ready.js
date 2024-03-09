@@ -1,5 +1,5 @@
 const { ActivityType } = require("discord.js");
-const User = require("../../../settings/models/ban.js");
+const User = require("../../../settings/models/Ban.js");
 
 module.exports.run = async (client) => {
     await client.poru.init(client, {

@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require("discord.js");
-const Ban = require("../../../settings/models/ban.js");
+const Ban = require("../../../settings/models/Ban.js");
 
 module.exports = {
     name: "ban",
