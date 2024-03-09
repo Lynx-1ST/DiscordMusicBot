@@ -38,6 +38,6 @@
   },
   "homepage": "https://github.com/Lynx-1ST/DiscordMusicBot/#readme",
   "devDependencies": {
-    "node": "^18.16.1"
+    "node": "^18.16.0"
   }
 }
