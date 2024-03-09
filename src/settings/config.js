@@ -24,12 +24,12 @@ module.exports = {
   },
   nodes: [
     {
-      name: process.env.NODE_NAME1 || "Main",
-      host: process.env.NODE_HOST1 || "lava.link",
-      port: parseInt(process.env.NODE_PORT1 || "80"),
-      password: process.env.NODE_PASSWORD1 || "kronix",
+      name: process.env.NODE_NAME1 || "",
+      host: process.env.NODE_HOST1 || "",
+      port: parseInt(process.env.NODE_PORT1 || ""),
+      password: process.env.NODE_PASSWORD1 || "",
       secure: parseBoolean(process.env.NODE_SECURE1 || "false"),
-      regions: process.env.NODE_REGIONS1 || ["singapore"],
+      regions: process.env.NODE_REGIONS1 || ["asia"],
     }
   ],
 
