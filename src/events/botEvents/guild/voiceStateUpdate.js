@@ -55,11 +55,8 @@ module.exports.run = async (client, oldState, newState) => {
                 );
 
                 const TimeoutEmbed = new EmbedBuilder()
-                    .setDescription(
-                        `\`😢\` | Đã ngắt kết nối...!!! Bởi vì tôi bị bỏ lại một mình trong <#${vcRoom}>. Bạn có thể tắt tính năng này bằng cách sử dụng lệnh \`247\`.`,
-                    )
+                    .setDescription(`\`😢\` | Đã ngắt kết nối...!!! Bởi vì tôi bị bỏ lại một mình trong <#${vcRoom}>. Bạn có thể tắt tính năng này bằng cách sử dụng lệnh \`247\`.`,)
                     .setColor(client.color);
-
                 try {
                     if (leaveEmbed) leaveEmbed.send({ embeds: [TimeoutEmbed], components: [row] });
                 } catch (error) {

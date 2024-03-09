@@ -7,7 +7,7 @@ const {
     ButtonStyle,
 } = require("discord.js");
 const { readdirSync } = require("fs");
-const { supportUrl, inviteUrl, voteUrl } = require("../../../settings/config.js");
+const { supportUrl, inviteUrl, imageUrl} = require("../../../settings/config.js");
 
 module.exports = {
     name: "help",
@@ -30,8 +30,9 @@ module.exports = {
         await interaction.deferReply({ ephemeral: false });
 
         const row2 = new ActionRowBuilder()
-            .addComponents(new ButtonBuilder().setLabel("🤖").setURL('https://github.com/Lynx-1ST').setStyle(ButtonStyle.Link))
+            .addComponents(new ButtonBuilder().setLabel("🤖").setURL(inviteUrl).setStyle(ButtonStyle.Link))
             .addComponents(new ButtonBuilder().setLabel("Support 🛡️").setURL(supportUrl).setStyle(ButtonStyle.Link));
+
 
         const categories = readdirSync("./src/commands/Slash/");
 
@@ -93,6 +94,7 @@ module.exports = {
                                     .join("\n")}`
                             )
                             .setColor(client.color)
+                            .setImage(imageUrl)
                             .setFooter({
                                 text: `Tạo bởi Lynx_1ST 🛡️ | Tổng số lệnh: ${
                                     client.slashCommands.filter((c) => c.category === directory).size
@@ -117,8 +119,9 @@ module.exports = {
                             `Vui lòng sử dụng lại /help để kiểm tra lệnh <a:green:1213401879095152682>`
                         )
                         .setColor(client.color)
+                        .setImage(imageUrl)
                         .setFooter({
-                            text: `DMs để trở thành Premium`,
+                            text: `© ${client.user.username} | Tổng cộng lệnh: ${client.slashCommands.size}`,
                             iconURL: client.user.displayAvatarURL({ dynamic: true }),
                         })
                         .setTimestamp();

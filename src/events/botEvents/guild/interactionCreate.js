@@ -170,7 +170,7 @@ module.exports.run = async (client, interaction) => {
 
             warning.setDescription(`✖️ | Đã xảy ra lỗi.`);
 
-            return interaction.editReply({ embeds: [warning], components: [row], ephmeral: true });
+            return interaction.editReply({ embeds: [warning], components: [row]});
         }
     }
 };
