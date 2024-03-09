@@ -1,6 +1,6 @@
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, InteractionType } = require("discord.js");
 const { voteUrl } = require("../../../settings/config.js");
-const Ban = require("../../../settings/models/User.js");
+const Ban = require("../../../settings/models/Ban.js");
 
 module.exports.run = async (client, interaction) => {
     if (interaction.type === InteractionType.ApplicationCommand) {
@@ -31,10 +31,9 @@ module.exports.run = async (client, interaction) => {
 
         console.log(`${msg_cmd.join(" ")}`);
 
-        const userBan = await User.findOne({ Id: interaction.user.id });
-        const statusBan = userBan.status;
+        const userBan = await Ban.findOne({ userID: interaction.user.id });
 
-        if (userBan && statusBan.isBanned === true && interaction.user.id !== client.owner) {
+        if (userBan && userBan.isBanned === true && interaction.user.id !== client.owner) {
             return interaction.reply({
                 content: `✖️  | Bạn bị cấm sử dụng ${client.user}, hãy nhấp vào nút hỗ trợ để khiếu nại.`,
                 components: [row],

@@ -27,24 +27,23 @@ module.exports = {
 
         if (!typeMode.includes(type)) return message.reply({ content: "\✖️\ | Nhập lệnh. `bật` hoặc `tắt`." });
 
-        const user = await User.findOne({ Id: id });
+        const user = await Ban.findOne({ userID: id });
 
         if (!user) {
             const embed = new EmbedBuilder().setDescription(`\✖️\ | \`${id}\` không có trong database.`).setColor(client.color);
 
             return message.reply({ embeds: [embed] });
         }
-        const status = user.status;
 
         if (type === "enable") {
-            if (status.isBanned === true) {
+            if (user.isBanned === true) {
                 const embed = new EmbedBuilder().setDescription(`\✖️\ | \`${id}\` đã bị ban rồi.`).setColor(client.color);
 
                 return message.reply({ embeds: [embed] });
             } else {
-                status.isBanned = true;
-                status.bannedBy = message.author.id;
-                status.bannedAt = Date.now();
+                user.isBanned = true;
+                user.bannedBy = message.author.id;
+                user.bannedAt = Date.now();
 
                 await user.save();
 
@@ -58,9 +57,9 @@ module.exports = {
 
                 return message.reply({ embeds: [embed] });
             } else {
-                status.isBanned = false;
-                status.bannedBy = null;
-                status.bannedAt = null;
+                user.isBanned = false;
+                user.bannedBy = null;
+                user.bannedAt = null;
                 await user.save();
 
                 const embed = new EmbedBuilder().setDescription(`<a:check_mark:1213409895483965490> | Gỡ ban thành công \`${id}\`.`).setColor(client.color);
