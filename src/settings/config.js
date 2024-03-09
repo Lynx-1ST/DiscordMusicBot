@@ -29,7 +29,7 @@ module.exports = {
       port: parseInt(process.env.NODE_PORT1 || ""),
       password: process.env.NODE_PASSWORD1 || "",
       secure: parseBoolean(process.env.NODE_SECURE1 || "false"),
-      regions: process.env.NODE_REGIONS1 || ["asia"],
+      regions: process.env.NODE_REGIONS1 || [""],
     }
   ],
 
