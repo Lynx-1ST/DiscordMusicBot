@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require("discord.js");
-const Ban = require("../../../settings/models/Ban.js");
+const Ban = require("../../../settings/models/User.js");
 
 module.exports = {
     name: "ban",
@@ -27,23 +27,24 @@ module.exports = {
 
         if (!typeMode.includes(type)) return message.reply({ content: "\✖️\ | Nhập lệnh. `bật` hoặc `tắt`." });
 
-        const user = await Ban.findOne({ userID: id });
+        const user = await User.findOne({ Id: id });
 
         if (!user) {
             const embed = new EmbedBuilder().setDescription(`\✖️\ | \`${id}\` không có trong database.`).setColor(client.color);
 
             return message.reply({ embeds: [embed] });
         }
+        const status = user.status;
 
         if (type === "enable") {
-            if (user.isBanned === true) {
+            if (status.isBanned === true) {
                 const embed = new EmbedBuilder().setDescription(`\✖️\ | \`${id}\` đã bị ban rồi.`).setColor(client.color);
 
                 return message.reply({ embeds: [embed] });
             } else {
-                user.isBanned = true;
-                user.bannedBy = message.author.id;
-                user.bannedAt = Date.now();
+                status.isBanned = true;
+                status.bannedBy = message.author.id;
+                status.bannedAt = Date.now();
 
                 await user.save();
 
@@ -52,15 +53,14 @@ module.exports = {
                 return message.reply({ embeds: [embed] });
             }
         } else if (type === "disable") {
-            if (user.isBanned === false) {
+            if (status.isBanned === false) {
                 const embed = new EmbedBuilder().setDescription(`\✖️\ | \`${id}\` chưa bị ban.`).setColor(client.color);
 
                 return message.reply({ embeds: [embed] });
             } else {
-                user.isBanned = false;
-                user.bannedBy = null;
-                user.bannedAt = null;
-
+                status.isBanned = false;
+                status.bannedBy = null;
+                status.bannedAt = null;
                 await user.save();
 
                 const embed = new EmbedBuilder().setDescription(`<a:check_mark:1213409895483965490> | Gỡ ban thành công \`${id}\`.`).setColor(client.color);
