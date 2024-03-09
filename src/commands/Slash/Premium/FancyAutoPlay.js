@@ -3,29 +3,31 @@ const { EmbedBuilder } = require("discord.js");
 module.exports = {
     name: "autoplay",
     description: "Autoplay random related song/s.",
-    category: "Utility",
+    category: "Premium",
     permissions: {
         bot: [],
         channel: [],
-        user: ["ManageGuild"],
+        user: [],
     },
     settings: {
         inVc: true,
         sameVc: true,
         player: true,
-        current: true,
+        current: false,
         owner: false,
-        premium: false,
+        premium: true,
     },
-    run: async (client, interaction, player) => {
+    run: async (client, interaction) => {
         await interaction.deferReply({ ephemeral: true });
+
+        const player = client.poru.players.get(interaction.guild.id);
 
         const currentsong = player.currentTrack.info;
 
         const ytUri = /^(https?:\/\/)?(www\.)?(m\.)?(music\.)?(youtube\.com|youtu\.?be)\/.+$/gi.test(currentsong.uri);
 
         if (!ytUri) {
-            const embed = new EmbedBuilder().setDescription(`\`❌\` | Tự động phát chỉ hỗ trợ Youtube!`).setColor(client.color);
+            const embed = new EmbedBuilder().setDescription(`❌ | Tính năng chỉ hỗ trợ Youtube!`).setColor(client.color);
 
             return interaction.editReply({ embeds: [embed] });
         }
@@ -44,7 +46,11 @@ module.exports = {
             if (ytUri) {
                 const identifier = currentsong.identifier;
                 const search = `https://music.youtube.com/watch?v=${identifier}&list=RD${identifier}`;
-                const res = await client.poru.resolve({ query: search, source: "ytmsearch", requester: interaction.user });
+                const res = await client.poru.resolve(search);
+
+                for (const track of res.tracks) {
+                    track.info.requester = currentsong.requester;
+                }
 
                 await player.queue.add(res.tracks[Math.floor(Math.random() * res.tracks.length) ?? 1]);
 
