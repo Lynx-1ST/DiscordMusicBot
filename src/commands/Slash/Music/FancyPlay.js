@@ -7,7 +7,7 @@ module.exports = {
     category: "Music",
     options: [
         {
-            name: "query",
+            name: "link/từ khoá",
             description: "Cung cấp tên/link bài hát.",
             type: ApplicationCommandOptionType.String,
             required: true,
@@ -51,14 +51,19 @@ module.exports = {
         // This will not prevent the user to use a direct youtube url!!!
         // if you want to pass a "return" response to the user when you disable youtube, do some searching on the internet for how to do that!!!
 
-        if (!player) {
-            player = await client.poru.createConnection({
-                guildId: interaction.guild.id,
-                voiceChannel: interaction.member.voice.channel.id,
-                textChannel: interaction.channel.id,
-                region: interaction.member.voice.channel.rtcRegion || undefined,
-                deaf: true,
-            });
+        if (interaction.member.voice && interaction.member.voice.channel) {
+            if (!player) {
+                player = await client.poru.createConnection({
+                    guildId: interaction.guild.id,
+                    voiceChannel: interaction.member.voice.channel.id,
+                    textChannel: interaction.channel.id,
+                    region: interaction.member.voice.channel.rtcRegion || undefined,
+                    deaf: true,
+                });
+            }
+        } else {
+            // Handle the case where the user is not in a voice channel
+            console.log("Người dùng không ở trong kênh thoại !");
         }
 
         const res = await client.poru.resolve(song, source); // <<== you can remove this "source" property for default ytsearch source. see config.js for details.
