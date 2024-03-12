@@ -7,7 +7,7 @@ module.exports = {
     category: "Music",
     options: [
         {
-            name: "link/từ khoá",
+            name: "query",
             description: "Cung cấp tên/link bài hát.",
             type: ApplicationCommandOptionType.String,
             required: true,
@@ -63,7 +63,7 @@ module.exports = {
             }
         } else {
             // Handle the case where the user is not in a voice channel
-            console.log("Người dùng không ở trong kênh thoại !");
+            console.log("User is not in a voice channel.");
         }
 
         const res = await client.poru.resolve(song, source); // <<== you can remove this "source" property for default ytsearch source. see config.js for details.

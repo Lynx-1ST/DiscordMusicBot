@@ -6,7 +6,7 @@ module.exports = {
     category: "Music",
     options: [
         {
-            name: "vị trí",
+            name: "position",
             description: "Vị trí của bài hát.",
             type: ApplicationCommandOptionType.Number,
             required: true,
