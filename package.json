@@ -23,16 +23,16 @@
     "poru": "github:adh319/poru",
     "pretty-ms": "^7.0.1",
     "quick.db": "^9.1.7",
-    "voucher-code-generator": "^1.3.0"
+    "voucher-code-generator": "^1.3.0",
     "@discordjs/uws": "^10.149.0",
-		"@skyra/timestamp": "^1.0.0",
-		"chalk": "4.1.2",
-		"discord.js": "marioparaschiv/discord.js#master",
-		"discord.js-light": "marioparaschiv/discord.js-light#master",
-		"dotenv": "github:andreialecu/dotenv#feat-multiline",
-		"json5": "^2.2.0",
-		"moment": "^2.29.1",
-		"phin": "github:marioparaschiv/phin"
+    "@skyra/timestamp": "^1.0.0",
+    "chalk": "4.1.2",
+    "discord.js": "marioparaschiv/discord.js#master",
+    "discord.js-light": "marioparaschiv/discord.js-light#master",
+    "dotenv": "github:andreialecu/dotenv#feat-multiline",
+    "json5": "^2.2.0",
+    "moment": "^2.29.1",
+    "phin": "github:marioparaschiv/phin"
 
   },
   "author": "Lynx_1ST",
