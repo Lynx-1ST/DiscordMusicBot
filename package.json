@@ -22,7 +22,7 @@
     "node-capitalize": "^1.0.0",
     "node-cron": "^3.0.2",
     "node-fetch": "^2.6.11",
-    "poru": "^4.5.0",
+    "poru": "^3.7.3",
     "pretty-ms": "^7.0.1",
     "quick.db": "^9.1.7",
     "voucher-code-generator": "^1.3.0"
