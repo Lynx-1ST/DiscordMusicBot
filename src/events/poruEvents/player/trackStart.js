@@ -213,7 +213,7 @@ module.exports.run = async (client, player, track) => {
         } else if (message.customId === "voldown") {
             if (!player) {
                 collector.stop();
-            } else if (player.volume < 20) {
+            } else if (volumeDisplay < 20) {
                 await player.setVolume(10);
 
                 const embed = new EmbedBuilder().setDescription(`\`❌\` | Âm lượng không thể thấp hơn: \`10%\``).setColor(client.color);
@@ -222,7 +222,7 @@ module.exports.run = async (client, player, track) => {
             } else {
                 message.deferUpdate();
 
-                await player.setVolume(player.volume - 10);
+                await player.setVolume(volumeDisplay - 10);
 
                 Started.setFooter({
                     text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${volumeDisplay}%`,
@@ -233,7 +233,7 @@ module.exports.run = async (client, player, track) => {
         } else if (message.customId === "volup") {
             if (!player) {
                 collector.stop();
-            } else if (player.volume > 90) {
+            } else if (volumeDisplay > 90) {
                 await player.setVolume(100);
 
                 const embed = new EmbedBuilder().setDescription(`\`❌\` | Âm lượng không thể cao hơn: \`100%\``).setColor(client.color);
@@ -242,7 +242,7 @@ module.exports.run = async (client, player, track) => {
             } else {
                 message.deferUpdate();
 
-                await player.setVolume(player.volume + 10);
+                await player.setVolume(volumeDisplay + 10);
 
                 Started.setFooter({
                     text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${volumeDisplay}%`,
