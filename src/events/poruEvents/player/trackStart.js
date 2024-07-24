@@ -2,7 +2,6 @@ const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("
 const formatDuration = require("../../../structures/FormatDuration.js");
 const GControl = require("../../../settings/models/Control.js");
 const capital = require("node-capitalize");
-const volumeDisplay = typeof player.volume !== 'undefined' ? player.volume : 100; // Default volume to 100 if undefined
 
 module.exports.run = async (client, player, track) => {
     let Control = await GControl.findOne({ guild: player.guildId });
@@ -11,13 +10,10 @@ module.exports.run = async (client, player, track) => {
     }
     if (player.disconnectTimeout) {
         clearTimeout(player.disconnectTimeout);
-        player.disconnectTimeout = null; // Xoá bộ đếm
+        player.disconnectTimeout = null;
     }
-   
-
     if (!player) return;
 
-    const authorImage = track.info.authorImage || client.user.displayAvatarURL();
     const titles = track.info.title.length > 20 ? track.info.title.substr(0, 20) + "..." : track.info.title;
     const authors = track.info.author.length > 20 ? track.info.author.substr(0, 20) + "..." : track.info.author;
     const trackDuration = track.info.isStream ? "LIVE" : formatDuration(track.info.length);
@@ -29,7 +25,7 @@ module.exports.run = async (client, player, track) => {
             iconURL: "https://cdn.discordapp.com/emojis/1189604441213644851.gif", // Thay "track.info.authorImage" bằng đường dẫn hình ảnh của tác giả
         })
         .setDescription(`**[${trackTitle}](${track.info.uri})**.`)
-        .setThumbnail(authorImage)
+        .setThumbnail(client.user.displayAvatarURL())
         .setImage(track.info.image)
         .addFields([
             { name: `Tác giả:`, value: `${trackAuthor}`, inline: true },
@@ -37,7 +33,7 @@ module.exports.run = async (client, player, track) => {
             { name: `Thời lượng:`, value: `${trackDuration}`, inline: true },
         ])
         .setColor(client.color)
-        .setFooter({ text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${volumeDisplay}%` });
+        .setFooter({ text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${player.volume}%` });
 
 
     const emoji = client.emoji.button;
@@ -55,8 +51,7 @@ module.exports.run = async (client, player, track) => {
 
     const button = new ActionRowBuilder().addComponents(bReplay, bPrev, bPause, bSkip, bLoop);
     const button2 = new ActionRowBuilder().addComponents(bShuffle, bVDown, bStop, bVUp, bInfo);
-
-// Proceed to add the new track to the queue as usual
+z
     // When set to "disable", button control won't show.
     if (Control.playerControl === "disable") {
         return client.channels.cache
