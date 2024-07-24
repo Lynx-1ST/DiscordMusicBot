@@ -5,13 +5,14 @@ const capital = require("node-capitalize");
 const volumeDisplay = typeof player.volume !== 'undefined' ? player.volume : 100; // Default volume to 100 if undefined
 
 module.exports.run = async (client, player, track) => {
+
     if (player.disconnectTimeout) {
         clearTimeout(player.disconnectTimeout);
-        player.disconnectTimeout = null; // Clear the reference
+        player.disconnectTimeout = null; // Xoá bộ đếm
     }
+
     let Control = await GControl.findOne({ guild: player.guildId });
-    // This should be placed in the function or event handler where a new track is added
-    // This is the default setting for button control
+  // Discord Button
     if (!Control) {
         Control = await GControl.create({ guild: player.guildId, playerControl: "enable" });
     }
@@ -38,7 +39,7 @@ module.exports.run = async (client, player, track) => {
             { name: `Thời lượng:`, value: `${trackDuration}`, inline: true },
         ])
         .setColor(client.color)
-        .setFooter({ text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${player.volume}%` });
+        .setFooter({ text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${volumeDisplay}%` });
 
 
     const emoji = client.emoji.button;
