@@ -5,17 +5,15 @@ const capital = require("node-capitalize");
 const volumeDisplay = typeof player.volume !== 'undefined' ? player.volume : 100; // Default volume to 100 if undefined
 
 module.exports.run = async (client, player, track) => {
-
+    let Control = await GControl.findOne({ guild: player.guildId });
+    if (!Control) {
+        Control = await GControl.create({ guild: player.guildId, playerControl: "enable" });
+    }
     if (player.disconnectTimeout) {
         clearTimeout(player.disconnectTimeout);
         player.disconnectTimeout = null; // Xoá bộ đếm
     }
-
-    let Control = await GControl.findOne({ guild: player.guildId });
-  // Discord Button
-    if (!Control) {
-        Control = await GControl.create({ guild: player.guildId, playerControl: "enable" });
-    }
+   
 
     if (!player) return;
 
