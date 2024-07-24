@@ -10,7 +10,7 @@ module.exports.run = async (client, player) => {
     if (player.message) await player.message.delete();
 
     // Kiểm tra nếu đã cài đặt 247 và đã đến thời gian ngắt kết nối
-    const data = await Reconnect.findOne({ guild: player.guildId });
+    const data = await Reconnect.findOne({guild: player.guildId});
     if (data && Date.now() >= data.time) {
         await data.delete();
     }
@@ -23,7 +23,7 @@ module.exports.run = async (client, player) => {
     const embed = new EmbedBuilder()
         .setDescription(`\`⏳\` | Đang chờ ${disconnectDelay / 1000} giây trước khi ngắt kết nối...`)
         .setColor(client.color);
-    const waitingMessage = await channel.send({ embeds: [embed] });
+    const waitingMessage = await channel.send({embeds: [embed]});
 
     // Đặt hẹn giờ để ngắt kết nối sau thời gian chờ
     setTimeout(async () => {
@@ -36,6 +36,9 @@ module.exports.run = async (client, player) => {
         const finalEmbed = new EmbedBuilder()
             .setDescription(`\`👋\` | Đã ngắt kết nối...!!! Do hàng đợi trống. Điều này có thể được vô hiệu hóa bằng cách sử dụng lệnh \`247\`.`)
             .setColor(client.color);
-        return channel.send({ embeds: [finalEmbed] });
+        channel.send({embeds: [finalEmbed]});
+        player.disconnectTimeout = null; // Clear the reference after timeout completes
     }, disconnectDelay);
-};
+
+    player.disconnectTimeout = setTimeout; // Store the timeout reference
+}
