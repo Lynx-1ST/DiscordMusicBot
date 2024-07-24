@@ -10,11 +10,7 @@ module.exports.run = async (client, player, track) => {
     if (!Control) {
         Control = await GControl.create({ guild: player.guildId, playerControl: "enable" });
     }
-// This part should be in the event or method where a new song is added to the queue
-    if (player.disconnectTimeout) {
-        clearTimeout(player.disconnectTimeout);
-        player.disconnectTimeout = null; // Clear the reference
-    }
+
     if (!player) return;
 
     const titles = track.info.title.length > 20 ? track.info.title.substr(0, 20) + "..." : track.info.title;
@@ -54,7 +50,13 @@ module.exports.run = async (client, player, track) => {
 
     const button = new ActionRowBuilder().addComponents(bReplay, bPrev, bPause, bSkip, bLoop);
     const button2 = new ActionRowBuilder().addComponents(bShuffle, bVDown, bStop, bVUp, bInfo);
+    // This should be placed in the function or event handler where a new track is added
+    if (player.disconnectTimeout) {
+        clearTimeout(player.disconnectTimeout);
+        player.disconnectTimeout = null; // Clear the reference
+    }
 
+// Proceed to add the new track to the queue as usual
     // When set to "disable", button control won't show.
     if (Control.playerControl === "disable") {
         return client.channels.cache
