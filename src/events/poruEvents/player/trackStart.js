@@ -2,7 +2,7 @@ const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("
 const formatDuration = require("../../../structures/FormatDuration.js");
 const GControl = require("../../../settings/models/Control.js");
 const capital = require("node-capitalize");
-const volumeDisplay = typeof player.volume !== 'undefined' ? player.volume : 100; // Default volume to 100 if undefined
+
 
 module.exports.run = async (client, player, track) => {
     let Control = await GControl.findOne({ guild: player.guildId });
@@ -35,7 +35,7 @@ module.exports.run = async (client, player, track) => {
             { name: `Thời lượng:`, value: `${trackDuration}`, inline: true },
         ])
         .setColor(client.color)
-        .setFooter({ text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${volumeDisplay}%` });
+        .setFooter({ text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${player.volume}%` });
 
 
     const emoji = client.emoji.button;
@@ -90,7 +90,7 @@ module.exports.run = async (client, player, track) => {
                 player.setLoop("TRACK");
 
                 Started.setFooter({
-                    text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${volumeDisplay}%`,
+                    text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${player.volume}%`,
                 });
 
                 bLoop.setEmoji(emoji.loop.track).setStyle(ButtonStyle.Primary);
@@ -102,7 +102,7 @@ module.exports.run = async (client, player, track) => {
                 player.setLoop("QUEUE");
 
                 Started.setFooter({
-                    text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${volumeDisplay}%`,
+                    text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${player.volume}%`,
                 });
 
                 bLoop.setEmoji(emoji.loop.queue).setStyle(ButtonStyle.Success);
@@ -114,7 +114,7 @@ module.exports.run = async (client, player, track) => {
                 player.setLoop("NONE");
 
                 Started.setFooter({
-                    text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${volumeDisplay}%`,
+                    text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${player.volume}%`,
                 });
 
                 bLoop.setEmoji(emoji.loop.none).setStyle(ButtonStyle.Secondary);
@@ -213,7 +213,7 @@ module.exports.run = async (client, player, track) => {
         } else if (message.customId === "voldown") {
             if (!player) {
                 collector.stop();
-            } else if (volumeDisplay < 20) {
+            } else if (player.volume < 20) {
                 await player.setVolume(10);
 
                 const embed = new EmbedBuilder().setDescription(`\`❌\` | Âm lượng không thể thấp hơn: \`10%\``).setColor(client.color);
@@ -222,10 +222,10 @@ module.exports.run = async (client, player, track) => {
             } else {
                 message.deferUpdate();
 
-                await player.setVolume(volumeDisplay - 10);
+                await player.setVolume(player.volume - 10);
 
                 Started.setFooter({
-                    text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${volumeDisplay}%`,
+                    text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${player.volume}%`,
                 });
 
                 await nplaying.edit({ embeds: [Started], components: [button, button2] });
@@ -233,7 +233,7 @@ module.exports.run = async (client, player, track) => {
         } else if (message.customId === "volup") {
             if (!player) {
                 collector.stop();
-            } else if (volumeDisplay > 90) {
+            } else if (player.volume > 90) {
                 await player.setVolume(100);
 
                 const embed = new EmbedBuilder().setDescription(`\`❌\` | Âm lượng không thể cao hơn: \`100%\``).setColor(client.color);
@@ -242,10 +242,10 @@ module.exports.run = async (client, player, track) => {
             } else {
                 message.deferUpdate();
 
-                await player.setVolume(volumeDisplay + 10);
+                await player.setVolume(player.volume + 10);
 
                 Started.setFooter({
-                    text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${volumeDisplay}%`,
+                    text: `Loop: ${capital(player.loop)} • Hàng chờ: ${player.queue.length} • Âm lượng: ${player.volume}%`,
                 });
 
                 await nplaying.edit({ embeds: [Started], components: [button, button2] });
@@ -290,7 +290,7 @@ module.exports.run = async (client, player, track) => {
                         { name: `Yêu cầu:`, value: `${player.currentTrack.info.requester}`, inline: true },
                         { name: `Nguồn:`, value: `${sources}`, inline: true },
                         { name: `Thời lượng:`, value: `${playerDuration}`, inline: true },
-                        { name: `Âm lượng:`, value: `${volumeDisplay}%`, inline: true },
+                        { name: `Âm lượng:`, value: `${player.volume}%`, inline: true },
                         { name: `Hàng chờ còn lại:`, value: `${player.queue.length}`, inline: true },
                         {
                             name: `Tiến trình bài hát \`[${currentPosition}]\``,
