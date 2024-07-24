@@ -26,7 +26,7 @@ module.exports.run = async (client, player) => {
     const waitingMessage = await channel.send({embeds: [embed]});
 
     // Đặt hẹn giờ để ngắt kết nối sau thời gian chờ
-    setTimeout(async () => {
+    player.disconnectTimeout = setTimeout(async () => {
         await player.destroy();
 
         // Xoá thông báo chờ đợi sau khi ngắt kết nối
@@ -40,5 +40,5 @@ module.exports.run = async (client, player) => {
         player.disconnectTimeout = null; // Clear the reference after timeout completes
     }, disconnectDelay);
 
-    player.disconnectTimeout = setTimeout; // Store the timeout reference
+     // Store the timeout reference
 }
