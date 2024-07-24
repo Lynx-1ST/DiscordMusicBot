@@ -2,6 +2,7 @@ const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("
 const formatDuration = require("../../../structures/FormatDuration.js");
 const GControl = require("../../../settings/models/Control.js");
 const capital = require("node-capitalize");
+const volumeDisplay = typeof player.volume !== 'undefined' ? player.volume : 100; // Default volume to 100 if undefined
 
 module.exports.run = async (client, player, track) => {
     if (player.disconnectTimeout) {
@@ -28,7 +29,7 @@ module.exports.run = async (client, player, track) => {
             iconURL: "https://cdn.discordapp.com/emojis/1189604441213644851.gif", // Thay "track.info.authorImage" bằng đường dẫn hình ảnh của tác giả
         })
         .setDescription(`**[${trackTitle}](${track.info.uri})**.`)
-        .setThumbnail(client.user.displayAvatarURL())
+        .setThumbnail(track.info.authorImage)
         .setImage(track.info.image)
         .addFields([
             { name: `Tác giả:`, value: `${trackAuthor}`, inline: true },
