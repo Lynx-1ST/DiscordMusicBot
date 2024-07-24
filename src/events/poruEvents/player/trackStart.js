@@ -51,7 +51,7 @@ module.exports.run = async (client, player, track) => {
 
     const button = new ActionRowBuilder().addComponents(bReplay, bPrev, bPause, bSkip, bLoop);
     const button2 = new ActionRowBuilder().addComponents(bShuffle, bVDown, bStop, bVUp, bInfo);
-z
+
     // When set to "disable", button control won't show.
     if (Control.playerControl === "disable") {
         return client.channels.cache
