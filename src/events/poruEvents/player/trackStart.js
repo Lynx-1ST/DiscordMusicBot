@@ -4,8 +4,12 @@ const GControl = require("../../../settings/models/Control.js");
 const capital = require("node-capitalize");
 
 module.exports.run = async (client, player, track) => {
+    if (player.disconnectTimeout) {
+        clearTimeout(player.disconnectTimeout);
+        player.disconnectTimeout = null; // Clear the reference
+    }
     let Control = await GControl.findOne({ guild: player.guildId });
-
+    // This should be placed in the function or event handler where a new track is added
     // This is the default setting for button control
     if (!Control) {
         Control = await GControl.create({ guild: player.guildId, playerControl: "enable" });
@@ -50,11 +54,6 @@ module.exports.run = async (client, player, track) => {
 
     const button = new ActionRowBuilder().addComponents(bReplay, bPrev, bPause, bSkip, bLoop);
     const button2 = new ActionRowBuilder().addComponents(bShuffle, bVDown, bStop, bVUp, bInfo);
-    // This should be placed in the function or event handler where a new track is added
-    if (player.disconnectTimeout) {
-        clearTimeout(player.disconnectTimeout);
-        player.disconnectTimeout = null; // Clear the reference
-    }
 
 // Proceed to add the new track to the queue as usual
     // When set to "disable", button control won't show.
