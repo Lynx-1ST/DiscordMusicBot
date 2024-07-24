@@ -15,6 +15,10 @@ module.exports.run = async (client, player, track) => {
     }
     if (!player) return;
 
+    if (typeof player.volume === 'undefined') {
+    player.volume = 100;
+    }
+
     const authorImage = track.info.authorImage || client.user.displayAvatarURL();
     const titles = track.info.title.length > 20 ? track.info.title.substr(0, 20) + "..." : track.info.title;
     const authors = track.info.author.length > 20 ? track.info.author.substr(0, 20) + "..." : track.info.author;
