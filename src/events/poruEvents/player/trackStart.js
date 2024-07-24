@@ -18,6 +18,7 @@ module.exports.run = async (client, player, track) => {
 
     if (!player) return;
 
+    const authorImage = track.info.authorImage || client.user.displayAvatarURL();
     const titles = track.info.title.length > 20 ? track.info.title.substr(0, 20) + "..." : track.info.title;
     const authors = track.info.author.length > 20 ? track.info.author.substr(0, 20) + "..." : track.info.author;
     const trackDuration = track.info.isStream ? "LIVE" : formatDuration(track.info.length);
@@ -29,7 +30,7 @@ module.exports.run = async (client, player, track) => {
             iconURL: "https://cdn.discordapp.com/emojis/1189604441213644851.gif", // Thay "track.info.authorImage" bằng đường dẫn hình ảnh của tác giả
         })
         .setDescription(`**[${trackTitle}](${track.info.uri})**.`)
-        .setThumbnail(track.info.authorImage)
+        .setThumbnail(authorImage)
         .setImage(track.info.image)
         .addFields([
             { name: `Tác giả:`, value: `${trackAuthor}`, inline: true },
