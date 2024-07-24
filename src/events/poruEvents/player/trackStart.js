@@ -10,7 +10,11 @@ module.exports.run = async (client, player, track) => {
     if (!Control) {
         Control = await GControl.create({ guild: player.guildId, playerControl: "enable" });
     }
-
+// This part should be in the event or method where a new song is added to the queue
+    if (player.disconnectTimeout) {
+        clearTimeout(player.disconnectTimeout);
+        player.disconnectTimeout = null; // Clear the reference
+    }
     if (!player) return;
 
     const titles = track.info.title.length > 20 ? track.info.title.substr(0, 20) + "..." : track.info.title;
