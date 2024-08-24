@@ -82,7 +82,7 @@ module.exports.run = async (client, player, track) => {
         }
     };
 
-    const collector = nplaying.createMessageComponentCollector({ filter, time: track.info.lenght });
+    const collector = nplaying.createMessageComponentCollector({ filter, time: track.info.length });
 
     collector.on("collect", async (message) => {
         if (message.customId === "loop") {
