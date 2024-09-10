@@ -34,8 +34,8 @@ module.exports = {
   ],
 
 
-  mongoUri: process.env.MONGO_URI || "", 
-  supportUrl: process.env.SUPPORT_URL || "",
+  mongoUri: process.env.MONGO_URI || "mongodb+srv://maihang987th:loc.1005@discord.xhm84ds.mongodb.net/?retryWrites=true&w=majority", 
+  supportUrl: process.env.SUPPORT_URL || "https://github.com/Lynx-1ST",
   voteUrl: process.env.VOTE_URL || "https://github.com/Lynx-1ST",
   inviteUrl: process.env.INVITE_URL || "", 
   imageUrl: process.env.IMAGE_URL || "https://imgs.search.brave.com/jwLHIDhA6haNZYN37vbglCjO18R8DhLrrryE349pjQY/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9naWZk/Yi5jb20vaW1hZ2Vz/L2hpZ2gvYW5pbWUt/YmFubmVyLWdpZi1m/aWxlLTQ3N2tiLXU5/OHhoYnZqeXppM2gz/YWouZ2lm.gif",
