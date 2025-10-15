@@ -142,10 +142,7 @@ Xem chi tiết tại [LICENSE](LICENSE).
 
 © 2025 – Phát triển bởi **Lynx_1ST**
 
-```
 
 ---
 
-Bạn có muốn mình **thêm phần hướng dẫn cấu hình Lavalink v3 chi tiết** (cách tải, cách sửa `application.yml`, cách chạy bằng Java, ví dụ lệnh chạy) vào phần README luôn không?  
-Điều đó sẽ giúp người mới dễ khởi động bot hơn mà không cần tra Google.
-```
+
